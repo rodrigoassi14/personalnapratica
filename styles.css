@@ -131,7 +131,7 @@ h6 {
 }
 
 h1 {
-  font-size: clamp(1.5rem, 5vw, 4rem);
+  font-size: clamp(1.5rem, 2.5vw, 4rem);
   font-weight: 900;
 }
 
@@ -362,7 +362,7 @@ p {
   border-radius: var(--radius-pill);
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--red-light);
+  color: white;
   width: fit-content;
 }
 
@@ -478,14 +478,6 @@ p {
   padding: var(--space-2xl) 0;
 }
 
-.section-dark {
-  background: var(--bg-black);
-}
-
-.section-darker {
-  background: var(--bg-charcoal);
-}
-
 .section-header {
   text-align: center;
   margin-bottom: var(--space-xl);
@@ -506,6 +498,81 @@ p {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-bottom: var(--space-sm);
+}
+
+.for-you-section .section-label,
+.benefits-section .section-label,
+.modules-section .section-label,
+.transformation-section .section-label,
+.journey-section .section-label,
+.quiz-section .section-label,
+.mission-values-section .section-label,
+.expert-section .section-label,
+.objections-section .section-label,
+.testimonials-section .section-label,
+.pricing-section .section-label,
+.guarantee-section .section-label,
+.faq-section .section-label,
+.cta-final .section-label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.comparison-section .section-label {
+  color: var(--bg-black);
+}
+
+.for-you-section h1 .text-red,
+.for-you-section h2 .text-red,
+.for-you-section h3 .text-red,
+.benefits-section h1 .text-red,
+.benefits-section h2 .text-red,
+.benefits-section h3 .text-red,
+.modules-section h1 .text-red,
+.modules-section h2 .text-red,
+.modules-section h3 .text-red,
+.transformation-section h1 .text-red,
+.transformation-section h2 .text-red,
+.transformation-section h3 .text-red,
+.journey-section h1 .text-red,
+.journey-section h2 .text-red,
+.journey-section h3 .text-red,
+.quiz-section h1 .text-red,
+.quiz-section h2 .text-red,
+.quiz-section h3 .text-red,
+.mission-values-section h1 .text-red,
+.mission-values-section h2 .text-red,
+.mission-values-section h3 .text-red,
+.expert-section h1 .text-red,
+.expert-section h2 .text-red,
+.expert-section h3 .text-red,
+.objections-section h1 .text-red,
+.objections-section h2 .text-red,
+.objections-section h3 .text-red,
+.testimonials-section h1 .text-red,
+.testimonials-section h2 .text-red,
+.testimonials-section h3 .text-red,
+.pricing-section h1 .text-red,
+.pricing-section h2 .text-red,
+.pricing-section h3 .text-red,
+.guarantee-section h1 .text-red,
+.guarantee-section h2 .text-red,
+.guarantee-section h3 .text-red,
+.faq-section h1 .text-red,
+.faq-section h2 .text-red,
+.faq-section h3 .text-red,
+.cta-final h1 .text-red,
+.cta-final h2 .text-red,
+.cta-final h3 .text-red,
+.mid-cta h1 .text-red,
+.mid-cta h2 .text-red,
+.mid-cta h3 .text-red {
+  color: var(--white);
+}
+
+.comparison-section h1 .text-red,
+.comparison-section h2 .text-red,
+.comparison-section h3 .text-red {
+  color: var(--bg-black);
 }
 
 /* --- VIDEO / NOTEBOOK SECTION --- */
@@ -1110,7 +1177,124 @@ p {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* --- EXPERT SECTION --- */
+.mission-values-section {
+  background: var(--bg-charcoal);
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-values-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 520px;
+  background: radial-gradient(ellipse, rgba(204, 0, 0, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.mv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.mv-card {
+  background: var(--bg-card-dark);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.mv-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: rgba(204, 0, 0, 0.14);
+  border: 1px solid rgba(204, 0, 0, 0.28);
+  color: var(--white);
+  font-size: 1.25rem;
+  margin-bottom: var(--space-sm);
+}
+
+.mv-card h3 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-sm);
+}
+
+.mv-card p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.95rem;
+}
+
+.mv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mv-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.mv-list li::before {
+  content: '✓';
+  color: var(--green-check);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.mv-quote {
+  margin: var(--space-lg) auto 0;
+  max-width: 920px;
+  text-align: center;
+  padding: var(--space-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+}
+
+.mv-quote p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.mv-quote-strong {
+  margin-top: var(--space-sm);
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.mv-quote-author {
+  margin-top: var(--space-xs);
+  color: var(--gray-mid);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .mv-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .expert-section {
   background: var(--bg-black);
   position: relative;
@@ -1150,7 +1334,7 @@ p {
   display: inline-block;
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--red-primary);
+  color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-bottom: var(--space-sm);
@@ -1160,9 +1344,37 @@ p {
   max-width: 560px;
 }
 
+.expert-credentials {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 24px 0 32px;
+}
+
+.credential-item {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.78);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-left: 3px solid rgba(255, 255, 255, 0.22);
+  border-radius: 0 10px 10px 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .credential-item {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
 @media (min-width: 1025px) {
   .expert-section {
-    background-image: url('assets/secao-conheca-o-rodrigo-desktop.png');
+    background-image: url('../assets/secao-conheca-o-rodrigo-desktop.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1177,6 +1389,10 @@ p {
     justify-items: end;
     min-height: clamp(520px, 55vw, 720px);
   }
+}
+
+.expert-section .text-red {
+  color: var(--white);
 }
 
 @media (max-width: 1024px) {
@@ -1236,7 +1452,7 @@ p {
   font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 900;
-  color: var(--red-primary);
+  color: white;
 }
 
 .stat-item .stat-label {
@@ -1273,6 +1489,60 @@ p {
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+.video-poster {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.video-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-poster-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 74px;
+  height: 74px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
+}
+
+.video-poster-play::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-42%, -50%);
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid rgba(255, 255, 255, 0.92);
+}
+
+.video-poster:hover .video-poster-play {
+  transform: translate(-50%, -50%) scale(1.03);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.video-poster:focus-visible {
+  outline: 3px solid rgba(204, 0, 0, 0.55);
+  outline-offset: 3px;
 }
 
 .testimonial-video iframe {
@@ -1710,7 +1980,7 @@ p {
 
 .objection-item .objection {
   font-weight: 700;
-  color: var(--red-light);
+  color: white;
   font-size: 0.95rem;
   margin-bottom: var(--space-xs);
   display: flex;
@@ -1841,6 +2111,7 @@ p {
 
   .navbar-brand-name {
     margin-left: auto;
+    text-align: right;
     font-size: 0.92rem;
   }
 

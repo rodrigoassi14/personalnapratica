@@ -126,6 +126,27 @@ function initLandingPage() {
     });
   });
 
+  const testimonialPosters = document.querySelectorAll('.video-poster[data-video-src]');
+  testimonialPosters.forEach((poster) => {
+    poster.addEventListener('click', () => {
+      const wrapper = poster.closest('.testimonial-video');
+      const videoSrc = poster.getAttribute('data-video-src');
+      const videoTitle = poster.getAttribute('data-video-title') || 'Vídeo';
+      if (!wrapper || !videoSrc) return;
+
+      const iframe = document.createElement('iframe');
+      iframe.src = `${videoSrc}${videoSrc.includes('?') ? '&' : '?'}autoplay=1&rel=0&playsinline=1`;
+      iframe.title = videoTitle;
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+
+      wrapper.innerHTML = '';
+      wrapper.appendChild(iframe);
+    });
+  });
+
   // --- Video play button interaction ---
   const playBtn = document.querySelector('.video-play-btn');
   if (playBtn) {

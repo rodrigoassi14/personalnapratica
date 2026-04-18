@@ -155,9 +155,28 @@
       </div>
       <script src="https://fast.wistia.com/player.js" async></script>
       <script src="https://fast.wistia.com/embed/yz7d5kjayj.js" async type="module"></script>
+      <script src="https://fast.wistia.com/embed/59yxp6nckb.js" async type="module"></script>
+      <script src="https://fast.wistia.com/embed/b1c8os3hdm.js" async type="module"></script>
       <style>
+        .testimonial-video wistia-player {
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          display: block;
+        }
         wistia-player[media-id='yz7d5kjayj']:not(:defined) {
           background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/yz7d5kjayj/swatch');
+          display: block;
+          filter: blur(5px);
+          padding-top: 56.25%;
+        }
+        wistia-player[media-id='59yxp6nckb']:not(:defined) {
+          background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/59yxp6nckb/swatch');
+          display: block;
+          filter: blur(5px);
+          padding-top: 56.25%;
+        }
+        wistia-player[media-id='b1c8os3hdm']:not(:defined) {
+          background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/b1c8os3hdm/swatch');
           display: block;
           filter: blur(5px);
           padding-top: 56.25%;
@@ -167,6 +186,13 @@
         <div class="testimonial-video animate-on-scroll" style="grid-column: 1 / -1;">
           <wistia-player media-id="yz7d5kjayj" aspect="1.7777777777777777"></wistia-player>
         </div>
+        <div class="testimonial-video animate-on-scroll">
+          <wistia-player media-id="59yxp6nckb" aspect="1.7777777777777777"></wistia-player>
+        </div>
+        <div class="testimonial-video animate-on-scroll">
+          <wistia-player media-id="b1c8os3hdm" aspect="1.7777777777777777"></wistia-player>
+        </div>
+        <!--
         <div class="testimonial-video animate-on-scroll">
           <button class="video-poster" type="button" data-video-src="https://www.youtube-nocookie.com/embed/4pCMoSI0BlQ"
             data-video-title="Depoimento — Franciely Leão" aria-label="Reproduzir depoimento — Franciely Leão">
@@ -181,6 +207,7 @@
             <span class="video-poster-play" aria-hidden="true"></span>
           </button>
         </div>
+        -->
       </div>
     </div>
   </section>

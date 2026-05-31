@@ -351,6 +351,514 @@
       min-width: 250px;
     }
 
+    .secondary-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 96px 0 76px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(5, 5, 5, 0.92) 0%, rgba(5, 5, 5, 0.66) 45%, rgba(5, 5, 5, 0.96) 100%),
+        url("../assets/hero-bg.png") center / cover fixed no-repeat;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      isolation: isolate;
+    }
+
+    .secondary-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 50% 52%, rgba(244, 5, 18, 0.16), transparent 28rem),
+        linear-gradient(90deg, rgba(5, 5, 5, 0.75), rgba(5, 5, 5, 0.3), rgba(5, 5, 5, 0.75));
+    }
+
+    .secondary-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .secondary-kicker {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--red);
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .secondary-hero h2 {
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.02;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .secondary-hero h2 span {
+      display: block;
+      margin-top: 4px;
+      color: #cfcfcf;
+    }
+
+    .secondary-copy {
+      max-width: 760px;
+      margin: 24px auto 0;
+      color: #d7d7d7;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.48;
+    }
+
+    .secondary-action {
+      margin-top: 36px;
+    }
+
+    .secondary-points {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      margin-top: 50px;
+      color: #c7c7c7;
+      font-size: 15px;
+    }
+
+    .secondary-points span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .secondary-points svg {
+      width: 20px;
+      height: 20px;
+      color: var(--red);
+      stroke-width: 2;
+    }
+
+    .secondary-scroll {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      display: inline-flex;
+      color: #b8b8b8;
+      transform: translateX(-50%);
+      animation: bounceDown 1.6s infinite;
+    }
+
+    .secondary-scroll svg {
+      width: 34px;
+      height: 34px;
+    }
+
+    @keyframes bounceDown {
+      0%,
+      100% {
+        transform: translate(-50%, 0);
+      }
+
+      50% {
+        transform: translate(-50%, 9px);
+      }
+    }
+
+    .consult-extra {
+      position: relative;
+      padding: 88px 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .consult-extra-dark {
+      background:
+        linear-gradient(135deg, rgba(244, 5, 18, 0.06), transparent 32%),
+        #050505;
+    }
+
+    .consult-extra-gray {
+      background:
+        linear-gradient(180deg, #111113 0%, #0a0a0b 100%);
+    }
+
+    .consult-head {
+      max-width: 760px;
+      margin: 0 auto 46px;
+      text-align: center;
+    }
+
+    .consult-head .eyebrow {
+      justify-content: center;
+    }
+
+    .consult-head .eyebrow::before {
+      display: none;
+    }
+
+    .consult-head p {
+      max-width: 660px;
+      margin: 16px auto 0;
+      color: #cfcfcf;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .consult-rule {
+      width: 86px;
+      height: 4px;
+      margin: 18px auto 0;
+      background: var(--red);
+      border-radius: 999px;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .problem-card,
+    .method-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012)),
+        rgba(18, 18, 20, 0.92);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .problem-icon,
+    .method-icon,
+    .list-icon {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: rgba(244, 5, 18, 0.12);
+      color: var(--red);
+    }
+
+    .problem-icon svg,
+    .method-icon svg,
+    .list-icon svg,
+    .app-list svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2;
+    }
+
+    .problem-card h3,
+    .method-card h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.08;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .problem-card p,
+    .method-card p {
+      margin-top: 10px;
+      color: #c7c7c7;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .problem-close {
+      margin: 42px auto 0;
+      max-width: 760px;
+      color: #d6d6d6;
+      font-size: 28px;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .problem-close strong {
+      color: var(--white);
+      font-weight: 900;
+    }
+
+    .compare-wrap {
+      position: relative;
+      max-width: 1040px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      background: #0c0c0d;
+      overflow: hidden;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .compare-col {
+      padding: 42px;
+    }
+
+    .compare-col-muted {
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .compare-col-highlight {
+      position: relative;
+      border-left: 1px solid rgba(244, 5, 18, 0.58);
+      background:
+        linear-gradient(135deg, rgba(244, 5, 18, 0.22), rgba(244, 5, 18, 0.035) 56%),
+        #100809;
+    }
+
+    .compare-col h3 {
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .compare-col-muted h3 {
+      color: #888888;
+    }
+
+    .compare-list,
+    .program-list,
+    .app-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .compare-list li,
+    .program-list li,
+    .app-list li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #d6d6d6;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .compare-col-highlight .compare-list li {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .compare-list svg,
+    .program-list svg {
+      flex: 0 0 auto;
+      width: 23px;
+      height: 23px;
+      color: var(--red);
+      stroke-width: 2;
+    }
+
+    .compare-col-muted .compare-list svg {
+      color: #6b1115;
+    }
+
+    .vs-badge {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 58px;
+      height: 58px;
+      border: 4px solid #242426;
+      border-radius: 50%;
+      background: #050505;
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 900;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 28px rgba(244, 5, 18, 0.26);
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .method-card {
+      display: block;
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+
+    .method-card:hover {
+      border-color: rgba(244, 5, 18, 0.58);
+      transform: translateY(-4px);
+    }
+
+    .method-icon {
+      margin-bottom: 22px;
+      width: 58px;
+      height: 58px;
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1fr);
+      gap: 54px;
+      align-items: center;
+    }
+
+    .program-photo {
+      position: relative;
+      overflow: visible;
+    }
+
+    .program-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius);
+      object-fit: cover;
+      box-shadow: 18px 18px 0 var(--red);
+    }
+
+    .program-copy h2 {
+      font-family: var(--font-display);
+      font-size: 45px;
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .program-list {
+      margin-top: 30px;
+    }
+
+    .program-list li {
+      align-items: flex-start;
+      font-size: 18px;
+    }
+
+    .program-list svg {
+      margin-top: 2px;
+    }
+
+    .app-feature {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+      gap: 54px;
+      align-items: center;
+      margin-top: 28px;
+      padding: 46px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.01)),
+        #0f0f10;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+    }
+
+    .app-feature + .app-feature {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    }
+
+    .app-media {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .app-media::before {
+      content: "";
+      position: absolute;
+      inset: 9% 7%;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      background: #19191b;
+    }
+
+    .app-media img {
+      position: relative;
+      z-index: 1;
+      width: min(72%, 260px);
+      filter: drop-shadow(20px 20px 28px rgba(0, 0, 0, 0.55));
+      transition: transform 220ms ease;
+    }
+
+    .app-feature:hover .app-media img {
+      transform: translateY(-4px);
+    }
+
+    .app-copy h3 {
+      font-family: var(--font-display);
+      font-size: 43px;
+      font-weight: 400;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .app-copy h3 strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--red);
+      font-weight: 900;
+      font-style: italic;
+    }
+
+    .app-copy p {
+      margin-top: 20px;
+      color: #c8c8c8;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .app-list li {
+      align-items: flex-start;
+      color: #dfdfdf;
+      font-size: 16px;
+    }
+
+    .app-list svg {
+      flex: 0 0 auto;
+      margin-top: 1px;
+      color: var(--red);
+    }
+
+    .app-cta {
+      margin-top: 46px;
+      text-align: center;
+    }
+
     .audience {
       padding-top: 20px;
       background: linear-gradient(180deg, #0b0b0c 0%, #070707 100%);
@@ -789,6 +1297,21 @@
       .plans-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .program-grid,
+      .app-feature,
+      .app-feature + .app-feature {
+        gap: 34px;
+      }
+
+      .program-copy h2,
+      .app-copy h3 {
+        font-size: 38px;
+      }
+
+      .secondary-hero h2 {
+        font-size: 52px;
+      }
     }
 
     @media (max-width: 880px) {
@@ -868,6 +1391,47 @@
       .footer-main {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .consult-extra {
+        padding: 68px 0;
+      }
+
+      .problem-grid,
+      .method-grid,
+      .program-grid,
+      .app-feature,
+      .app-feature + .app-feature {
+        grid-template-columns: 1fr;
+      }
+
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .compare-col-highlight {
+        border-left: 0;
+        border-top: 1px solid rgba(244, 5, 18, 0.58);
+      }
+
+      .vs-badge {
+        display: none;
+      }
+
+      .app-feature {
+        padding: 34px;
+      }
+
+      .secondary-hero {
+        background-attachment: scroll;
+      }
+
+      .secondary-hero h2 {
+        font-size: 44px;
+      }
+
+      .secondary-copy {
+        font-size: 18px;
+      }
     }
 
     @media (max-width: 640px) {
@@ -877,6 +1441,103 @@
 
       .section {
         padding: 58px 0;
+      }
+
+      .consult-extra {
+        padding: 56px 0;
+      }
+
+      .consult-head {
+        margin-bottom: 32px;
+      }
+
+      .consult-head p {
+        font-size: 15px;
+      }
+
+      .problem-card,
+      .method-card,
+      .compare-col,
+      .app-feature {
+        padding: 24px;
+      }
+
+      .problem-card {
+        gap: 14px;
+      }
+
+      .problem-card h3,
+      .method-card h3 {
+        font-size: 19px;
+      }
+
+      .problem-close {
+        font-size: 22px;
+      }
+
+      .compare-col h3 {
+        font-size: 21px;
+      }
+
+      .compare-list li,
+      .app-list li {
+        font-size: 15px;
+      }
+
+      .program-grid {
+        gap: 34px;
+      }
+
+      .program-photo img {
+        box-shadow: 10px 10px 0 var(--red);
+      }
+
+      .program-copy h2,
+      .app-copy h3 {
+        font-size: 32px;
+      }
+
+      .program-list li {
+        font-size: 16px;
+      }
+
+      .app-media {
+        padding: 12px;
+      }
+
+      .app-media img {
+        width: min(78%, 230px);
+      }
+
+      .secondary-hero {
+        min-height: 760px;
+        padding: 82px 0 70px;
+      }
+
+      .secondary-hero h2 {
+        font-size: 36px;
+      }
+
+      .secondary-copy {
+        margin-top: 18px;
+        font-size: 16px;
+      }
+
+      .secondary-action {
+        margin-top: 28px;
+      }
+
+      .secondary-action .btn {
+        width: 100%;
+        padding-inline: 18px;
+      }
+
+      .secondary-points {
+        display: grid;
+        gap: 12px;
+        justify-content: stretch;
+        margin-top: 34px;
+        text-align: left;
       }
 
       .brand img {
@@ -919,6 +1580,7 @@
       }
 
       .hero-copy {
+        max-width: 330px;
         margin-top: 12px;
         font-size: 15px;
       }
@@ -1115,6 +1777,392 @@
               </svg>
             </a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="secondary-hero" id="segunda-hero" aria-labelledby="secondary-hero-title">
+      <div class="container">
+        <div class="secondary-hero-content">
+          <span class="secondary-kicker">Pare de tentar, comece a treinar</span>
+          <h2 id="secondary-hero-title">
+            O corpo que você deseja
+            <span>exige a disciplina que você precisa</span>
+          </h2>
+          <p class="secondary-copy">
+            Esqueça as dietas milagrosas e treinos genéricos. Eu vou construir o mapa exato para a sua transformação física e mental.
+          </p>
+
+          <div class="secondary-action">
+            <a href="#planos" class="btn btn-primary">Quero começar minha mudança</a>
+          </div>
+
+          <div class="secondary-points" aria-label="Benefícios da consultoria">
+            <span>
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="m8 12 2.5 2.5L16 9"></path>
+              </svg>
+              Treino Personalizado
+            </span>
+            <span>
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="m8 12 2.5 2.5L16 9"></path>
+              </svg>
+              Acompanhamento
+            </span>
+            <span>
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="m8 12 2.5 2.5L16 9"></path>
+              </svg>
+              Resultados Reais
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <a class="secondary-scroll" href="#problema" aria-label="Rolar para a próxima seção">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </a>
+    </section>
+
+    <section class="consult-extra consult-extra-dark" id="problema" aria-labelledby="problem-title">
+      <div class="container">
+        <div class="consult-head">
+          <h2 class="section-title" id="problem-title">Você já passou por isso?</h2>
+          <div class="consult-rule" aria-hidden="true"></div>
+        </div>
+
+        <div class="problem-grid">
+          <article class="problem-card">
+            <span class="problem-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </span>
+            <div>
+              <h3>Paga a academia e não vai</h3>
+              <p>A falta de motivação e rotina faz você desperdiçar dinheiro e sentir culpa todos os meses.</p>
+            </div>
+          </article>
+
+          <article class="problem-card">
+            <span class="problem-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="m22 17-8.5-8.5-5 5L2 7"></path>
+                <path d="M16 17h6v-6"></path>
+              </svg>
+            </span>
+            <div>
+              <h3>Treina, treina e não vê resultados</h3>
+              <p>Fazer exercícios aleatórios sem planejamento não gera hipertrofia nem queima gordura de forma eficiente.</p>
+            </div>
+          </article>
+
+          <article class="problem-card">
+            <span class="problem-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 7v5l3 2"></path>
+              </svg>
+            </span>
+            <div>
+              <h3>Falta de tempo</h3>
+              <p>Acha que precisa morar na academia para ter resultados, quando na verdade precisa de treinos intensos e curtos.</p>
+            </div>
+          </article>
+
+          <article class="problem-card">
+            <span class="problem-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M8 15s1.5-2 4-2 4 2 4 2"></path>
+                <path d="M9 9h.01"></path>
+                <path d="M15 9h.01"></path>
+              </svg>
+            </span>
+            <div>
+              <h3>Não se sente bem com o espelho</h3>
+              <p>Evita tirar a camisa ou usar certas roupas porque a autoestima não reflete quem você realmente é.</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="problem-close">O problema não é você.<br><strong>O problema é a estratégia que você está usando.</strong></p>
+      </div>
+    </section>
+
+    <section class="consult-extra" aria-labelledby="compare-title">
+      <div class="container">
+        <div class="consult-head">
+          <h2 class="section-title" id="compare-title">Não é só uma ficha de treino</h2>
+          <div class="consult-rule" aria-hidden="true"></div>
+        </div>
+
+        <div class="compare-wrap">
+          <div class="vs-badge" aria-hidden="true">VS</div>
+          <div class="compare-grid">
+            <div class="compare-col compare-col-muted">
+              <h3>Ficha comum</h3>
+              <ul class="compare-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="m15 9-6 6"></path>
+                    <path d="m9 9 6 6"></path>
+                  </svg>
+                  <span>Treino genérico e engessado</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="m15 9-6 6"></path>
+                    <path d="m9 9 6 6"></path>
+                  </svg>
+                  <span>Sem acompanhamento</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="m15 9-6 6"></path>
+                    <path d="m9 9 6 6"></path>
+                  </svg>
+                  <span>Sem ajustes para sua evolução</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="m15 9-6 6"></path>
+                    <path d="m9 9 6 6"></path>
+                  </svg>
+                  <span>Resultados lentos e incertos</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="compare-col compare-col-highlight">
+              <h3>Consultoria personalizada</h3>
+              <ul class="compare-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="m8 12 2.6 2.6L16 9"></path>
+                  </svg>
+                  <span>Treino 100% personalizado</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="m8 12 2.6 2.6L16 9"></path>
+                  </svg>
+                  <span>Acompanhamento próximo</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="m8 12 2.6 2.6L16 9"></path>
+                  </svg>
+                  <span>Ajustes constantes</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="m8 12 2.6 2.6L16 9"></path>
+                  </svg>
+                  <span>Resultados reais e consistentes</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="consult-extra consult-extra-gray" aria-labelledby="method-title">
+      <div class="container">
+        <div class="consult-head">
+          <span class="eyebrow">A metodologia</span>
+          <h2 class="section-title" id="method-title">Como vamos mudar seu jogo</h2>
+          <p>Um sistema testado e comprovado, desenhado exclusivamente para a sua rotina, suas limitações e seus objetivos.</p>
+        </div>
+
+        <div class="method-grid">
+          <article class="method-card">
+            <span class="method-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="9"></circle>
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v4"></path>
+                <path d="M12 18v4"></path>
+                <path d="M2 12h4"></path>
+                <path d="M18 12h4"></path>
+              </svg>
+            </span>
+            <h3>Treino 100% personalizado</h3>
+            <p>Analisamos sua biomecânica, histórico e objetivos para criar um treino que se encaixa na sua vida, seja na academia ou em casa.</p>
+          </article>
+
+          <article class="method-card">
+            <span class="method-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.7 8.7 0 0 1-4-.9L3 20l1.2-4A8.4 8.4 0 1 1 21 11.5Z"></path>
+              </svg>
+            </span>
+            <h3>Suporte direto</h3>
+            <p>Você não estará sozinho. Dúvidas sobre execução, ajustes de carga ou dias difíceis? Eu estarei a uma mensagem de distância.</p>
+          </article>
+
+          <article class="method-card">
+            <span class="method-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M4 19V5"></path>
+                <path d="M4 19h16"></path>
+                <path d="M8 16v-5"></path>
+                <path d="M12 16V8"></path>
+                <path d="M16 16v-7"></path>
+              </svg>
+            </span>
+            <h3>Ajustes periódicos</h3>
+            <p>O corpo estagna quando faz sempre a mesma coisa. Faremos avaliações e trocas estratégicas para garantir evolução contínua.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="consult-extra consult-extra-dark" id="programa-para-voce" aria-labelledby="program-title">
+      <div class="container">
+        <div class="program-grid">
+          <div class="program-photo">
+            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470&auto=format&fit=crop" alt="Pessoa treinando com intensidade">
+          </div>
+
+          <div class="program-copy">
+            <h2 id="program-title">Este programa é <span class="red">exatamente</span> para você que:</h2>
+            <ul class="program-list">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="m5 12 5 5L20 7"></path>
+                </svg>
+                <span>Quer ganhar massa muscular de forma limpa e sustentável.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="m5 12 5 5L20 7"></path>
+                </svg>
+                <span>Precisa perder gordura mas não quer ficar horas na esteira.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="m5 12 5 5L20 7"></path>
+                </svg>
+                <span>Já treina mas os resultados estagnaram há meses.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="m5 12 5 5L20 7"></path>
+                </svg>
+                <span>É iniciante e quer começar certo, sem risco de lesões.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="m5 12 5 5L20 7"></path>
+                </svg>
+                <span>Tem pouco tempo e precisa de treinos intensos de 45 a 60 minutos.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="consult-extra" aria-labelledby="app-title">
+      <div class="container">
+        <div class="consult-head">
+          <span class="eyebrow">Tecnologia a seu favor</span>
+          <h2 class="section-title" id="app-title">Seu treino na palma da mão</h2>
+          <p>Acesso a um aplicativo para você ter controle da sua evolução, onde quer que esteja treinando.</p>
+        </div>
+
+        <div class="app-feature">
+          <div class="app-media">
+            <img src="https://www.mfitpersonal.com.br/images/phone-screen-video-training.webp" alt="Visualização de vídeos de exercícios no app">
+          </div>
+
+          <div class="app-copy">
+            <h3>Visualizar <strong>vídeos de cada exercício</strong></h3>
+            <p>Quando está fácil entender o movimento, a chance de persistir nos treinos e executar com qualidade aumenta drasticamente.</p>
+            <ul class="app-list">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="m10 8 6 4-6 4V8Z"></path>
+                </svg>
+                <span>Execução guiada passo a passo</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path>
+                </svg>
+                <span>Treine com segurança e evite lesões</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="m13 2-8 12h7l-1 8 8-12h-7l1-8Z"></path>
+                </svg>
+                <span>Extraia o máximo de cada repetição</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="app-feature">
+          <div class="app-copy">
+            <h3>Acompanhar a <strong>própria evolução</strong></h3>
+            <p>Registre peso, medidas e carga utilizada nos exercícios para acompanhar o progresso rumo ao corpo que você deseja.</p>
+            <ul class="app-list">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="m3 17 6-6 4 4 8-8"></path>
+                  <path d="M14 7h7v7"></path>
+                </svg>
+                <span>Acompanhe peso e medidas do corpo</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"></path>
+                  <path d="M17 21v-8H7v8"></path>
+                  <path d="M7 3v5h8"></path>
+                </svg>
+                <span>Histórico completo de evolução de cargas</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <circle cx="12" cy="12" r="4"></circle>
+                </svg>
+                <span>Mantenha a motivação vendo seu progresso</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="app-media">
+            <img src="https://www.mfitpersonal.com.br/images/phone-with-graph.webp" alt="Gráficos de evolução no app">
+          </div>
+        </div>
+
+        <div class="app-cta">
+          <a class="btn btn-primary" href="#planos">
+            Assinar agora e acessar o app
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M5 12h14"></path>
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </a>
         </div>
       </div>
     </section>

@@ -406,10 +406,31 @@
       text-wrap: balance;
     }
 
-    .secondary-hero h2 span {
+    .secondary-hero h2 .headline-line {
+      display: block;
+    }
+
+    .secondary-hero h2 .headline-line-muted {
       display: block;
       margin-top: 4px;
       color: #cfcfcf;
+    }
+
+    .animated-headline .word {
+      display: inline-block;
+    }
+
+    .js-animations .animated-headline .word {
+      opacity: 0;
+      transform: translateY(0.95em) rotateX(50deg);
+      transform-origin: 50% 100%;
+      filter: blur(10px);
+      will-change: transform, opacity, filter;
+    }
+
+    .animated-headline.is-visible .word {
+      animation: wordReveal 780ms cubic-bezier(0.18, 0.72, 0.18, 1) forwards;
+      animation-delay: calc(var(--i) * 72ms);
     }
 
     .secondary-copy {
@@ -472,6 +493,66 @@
 
       50% {
         transform: translate(-50%, 9px);
+      }
+    }
+
+    @keyframes wordReveal {
+      from {
+        opacity: 0;
+        transform: translateY(0.95em) rotateX(50deg);
+        filter: blur(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+        filter: blur(0);
+      }
+    }
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(34px);
+      filter: blur(8px);
+      transition:
+        opacity 680ms ease,
+        transform 680ms cubic-bezier(0.18, 0.72, 0.18, 1),
+        filter 680ms ease;
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: opacity, transform, filter;
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    .reveal-left {
+      transform: translateX(-34px);
+    }
+
+    .reveal-right {
+      transform: translateX(34px);
+    }
+
+    .reveal-scale {
+      transform: scale(0.96);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .secondary-scroll {
+        animation: none;
+      }
+
+      .animated-headline .word,
+      .js-animations .animated-headline .word,
+      .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+        animation: none;
       }
     }
 
@@ -1785,9 +1866,23 @@
       <div class="container">
         <div class="secondary-hero-content">
           <span class="secondary-kicker">Pare de tentar, comece a treinar</span>
-          <h2 id="secondary-hero-title">
-            O corpo que você deseja
-            <span>exige a disciplina que você precisa</span>
+          <h2 class="animated-headline" id="secondary-hero-title"
+            aria-label="O corpo que você deseja exige a disciplina que você precisa">
+            <span class="headline-line" aria-hidden="true">
+              <span class="word" style="--i:0">O</span>
+              <span class="word" style="--i:1">corpo</span>
+              <span class="word" style="--i:2">que</span>
+              <span class="word" style="--i:3">você</span>
+              <span class="word" style="--i:4">deseja</span>
+            </span>
+            <span class="headline-line headline-line-muted" aria-hidden="true">
+              <span class="word" style="--i:5">exige</span>
+              <span class="word" style="--i:6">a</span>
+              <span class="word" style="--i:7">disciplina</span>
+              <span class="word" style="--i:8">que</span>
+              <span class="word" style="--i:9">você</span>
+              <span class="word" style="--i:10">precisa</span>
+            </span>
           </h2>
           <p class="secondary-copy">
             Esqueça as dietas milagrosas e treinos genéricos. Eu vou construir o mapa exato para a sua transformação física e mental.
@@ -2408,6 +2503,8 @@
   </footer>
 
   <script>
+    document.documentElement.classList.add("js-animations");
+
     const siteHeader = document.querySelector(".site-header");
 
     function updateHeaderState() {
@@ -2417,6 +2514,103 @@
     if (siteHeader) {
       updateHeaderState();
       window.addEventListener("scroll", updateHeaderState, { passive: true });
+    }
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const animatedHeadline = document.querySelector(".animated-headline");
+
+    const revealGroups = [
+      { selector: ".hero-content", effect: "reveal-left" },
+      { selector: ".secondary-kicker, .secondary-copy, .secondary-action, .secondary-points" },
+      { selector: ".consult-head" },
+      { selector: ".problem-card, .method-card, .audience-card, .plan-card, .proof-item" },
+      { selector: ".compare-col", effect: "reveal-scale" },
+      { selector: ".program-photo, .app-media", effect: "reveal-left" },
+      { selector: ".program-copy, .app-copy", effect: "reveal-right" },
+      { selector: ".app-feature, .app-cta" },
+      { selector: ".how-content", effect: "reveal-left" },
+      { selector: ".step" },
+      { selector: ".final-cta .container", effect: "reveal-scale" },
+      { selector: ".footer-brand, .footer-col, .footer-bottom" }
+    ];
+
+    const revealElements = [];
+
+    revealGroups.forEach(({ selector, effect }) => {
+      document.querySelectorAll(selector).forEach((element, index) => {
+        element.classList.add("reveal-on-scroll");
+
+        if (effect) {
+          element.classList.add(effect);
+        }
+
+        element.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 70}ms`);
+        revealElements.push(element);
+      });
+    });
+
+    const revealTargets = [...revealElements, animatedHeadline].filter(Boolean);
+    let revealObserver;
+    let revealCheckScheduled = false;
+
+    function revealElement(element) {
+      element.classList.add("is-visible");
+      revealObserver?.unobserve(element);
+    }
+
+    function isElementReadyToReveal(element) {
+      const rect = element.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      return rect.top < viewportHeight * 0.88 && rect.bottom > viewportHeight * 0.05;
+    }
+
+    function runRevealCheck() {
+      revealCheckScheduled = false;
+
+      revealTargets.forEach((element) => {
+        if (!element.classList.contains("is-visible") && isElementReadyToReveal(element)) {
+          revealElement(element);
+        }
+      });
+    }
+
+    function scheduleRevealCheck() {
+      if (revealCheckScheduled) {
+        return;
+      }
+
+      revealCheckScheduled = true;
+
+      if (typeof window.requestAnimationFrame === "function") {
+        window.requestAnimationFrame(runRevealCheck);
+        return;
+      }
+
+      runRevealCheck();
+    }
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      revealElements.forEach((element) => element.classList.add("is-visible"));
+      animatedHeadline?.classList.add("is-visible");
+    } else {
+      revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          revealElement(entry.target);
+        });
+      }, {
+        rootMargin: "0px 0px -12% 0px",
+        threshold: 0.16
+      });
+
+      revealTargets.forEach((element) => revealObserver.observe(element));
+      runRevealCheck();
+      window.addEventListener("scroll", scheduleRevealCheck, { passive: true });
+      window.addEventListener("resize", scheduleRevealCheck);
     }
   </script>
 </body>

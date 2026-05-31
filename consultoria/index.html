@@ -708,7 +708,7 @@
 
     .footer-main {
       display: grid;
-      grid-template-columns: minmax(230px, 1.1fr) repeat(3, minmax(0, 1fr));
+      grid-template-columns: minmax(230px, 1.1fr) repeat(2, minmax(0, 1fr));
       gap: 54px;
       padding: 36px 0 30px;
     }
@@ -816,7 +816,7 @@
       }
 
       .hero::before {
-        background-image: url("../assets/consultoria/bg-hero-consultoria.png");
+        background-image: url("../assets/consultoria/bg-hero-consultoria-mobile.png");
         background-position: center top;
         background-size: cover;
       }
@@ -904,27 +904,29 @@
       }
 
       .hero::before {
-        background-image: url("../assets/consultoria/bg-hero-consultoria.png");
-        background-position: center top;
-        background-size: cover;
+        background-image: url("../assets/consultoria/bg-hero-consultoria-mobile.png");
+        background-position: center bottom;
+        background-size: auto 92%;
       }
 
       .hero-content {
         width: 100%;
-        padding-top: 56px;
+        padding-top: 28px;
       }
 
       .hero h1 {
-        font-size: 34px;
+        font-size: 32px;
       }
 
       .hero-copy {
-        font-size: 16px;
+        margin-top: 12px;
+        font-size: 15px;
       }
 
       .hero-benefits {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 6px;
+        margin-top: 20px;
         width: min(100%, 300px);
       }
 
@@ -932,7 +934,7 @@
       .benefit:first-child {
         min-height: auto;
         min-width: 0;
-        padding: 0 0 10px;
+        padding: 0 0 6px;
         border-left: 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.16);
         grid-template-columns: 28px 1fr;
@@ -961,12 +963,17 @@
 
       .hero-actions {
         display: grid;
-        gap: 14px;
+        gap: 0;
+        margin-top: 16px;
       }
 
       .hero-actions .btn {
         width: 100%;
         min-width: 0;
+      }
+
+      .hero-actions .btn-outline {
+        display: none;
       }
 
       .section-title {
@@ -1032,11 +1039,11 @@
 <body>
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="#inicio" aria-label="Personal na Prática">
-        <img src="../assets/logo-personal-pensando-como-empresario.png" alt="Personal na Prática">
+      <a class="brand" href="#inicio" aria-label="Consultoria Agora ou Nunca">
+        <img src="../assets/consultoria/logo-consultoria.png" alt="Consultoria Agora ou Nunca">
         <span class="brand-text">
-          <strong>Personal na Prática</strong>
-          <span>Consultoria personalizada</span>
+          <strong>Consultoria Agora ou Nunca</strong>
+          <span>Treinos transformando a sua vida</span>
         </span>
       </a>
 
@@ -1211,7 +1218,6 @@
         <div class="plans-grid">
           <article class="plan-card">
             <h3>Anual</h3>
-            <div class="installments">12x de</div>
             <div class="price"><small>R$</small><span>1200</span></div>
             <p>Melhor custo-benefício</p>
             <a class="btn btn-primary"
@@ -1221,7 +1227,6 @@
 
           <article class="plan-card">
             <h3>Semestral</h3>
-            <div class="installments">6x de</div>
             <div class="price"><small>R$</small><span>900</span></div>
             <p>Equilíbrio entre prazo e investimento</p>
             <a class="btn btn-primary"
@@ -1231,7 +1236,6 @@
 
           <article class="plan-card">
             <h3>Trimestral</h3>
-            <div class="installments">3x de</div>
             <div class="price"><small>R$</small><span>540</span></div>
             <p>Compromisso e resultados mais rápidos</p>
             <a class="btn btn-primary"
@@ -1241,7 +1245,6 @@
 
           <article class="plan-card">
             <h3>Mensal</h3>
-            <div class="installments">1x de</div>
             <div class="price"><small>R$</small><span>220</span></div>
             <p>Flexibilidade para começar agora</p>
             <a class="btn btn-primary"
@@ -1328,9 +1331,9 @@
 
       <div class="footer-main">
         <div class="footer-brand">
-          <img src="../assets/logo-personal-pensando-como-empresario.png" alt="Personal na Prática">
-          <strong>Personal na Prática</strong>
-          <p>Mais que treinos. Transformação de dentro para fora.</p>
+          <img src="../assets/consultoria/logo-consultoria.png" alt="Consultoria Agora ou Nunca">
+          <strong>Consultoria Agora ou Nunca</strong>
+          <p>Treinos transformando a sua vida</p>
         </div>
 
         <div class="footer-col">
@@ -1348,16 +1351,11 @@
           <span>contato@personalnapratica.com</span>
         </div>
 
-        <div class="footer-col">
-          <h3>Localização</h3>
-          <span>Sua academia</span>
-          <span>Sua cidade - UF</span>
-        </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Personal na Prática. Todos os direitos reservados.</span>
-        <img src="../assets/logo-personal-pensando-como-empresario.png" alt="">
+        <span>© 2026 Consultoria Agora ou Nunca. Todos os direitos reservados.</span>
+        <img src="../assets/consultoria/logo-consultoria.png" alt="">
       </div>
     </div>
   </footer>

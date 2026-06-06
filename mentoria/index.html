@@ -190,6 +190,7 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      flex-shrink: 0;
     }
     .nav-brand img { height: 34px; width: auto; display: block; }
     .nav-brand-title {
@@ -200,10 +201,55 @@
       letter-spacing: 0.08em;
     }
 
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex: 1;
+      min-width: 0;
+      padding: 0 0.75rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      height: 0;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 0.85rem;
+      border-radius: 100px;
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.9);
+      white-space: nowrap;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(230, 32, 32, 0.18);
+      transform: translateY(-1px);
+    }
+
     .nav-cta {
       padding: 0.8rem 1.5rem;
       font-size: 1rem;
       border-radius: 100px;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
     }
 
     /* ===== HERO SECTION (ASYMMETRICAL) ===== */
@@ -895,6 +941,13 @@
     <div class="nav-brand">
       <img src="../assets/logo-personal-pensando-como-empresario.png" alt="Logo Personal na Prática">
       <span class="nav-brand-title">MENTORIA P.N.P.</span>
+    </div>
+    <div class="nav-links" aria-label="Navegação">
+      <a href="#identifique-se">Início</a>
+      <a href="#o-que-e">Método</a>
+      <a href="#encontros">Encontros</a>
+      <a href="#expert">Expert</a>
+      <a href="#inscricao">Inscrição</a>
     </div>
     <a href="#inscricao" class="btn btn-red nav-cta">Garantir Vaga</a>
   </nav>

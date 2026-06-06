@@ -755,6 +755,40 @@
     }
 
     .price-strike { text-decoration: line-through; color: var(--text-muted); font-size: 1.2rem; }
+    .price-installments {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.6rem;
+      margin: 1rem 0 0.5rem;
+      font-family: var(--font-heading);
+      font-weight: 900;
+      line-height: 1;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .price-installments small {
+      margin-top: 0.85rem;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.92);
+      white-space: nowrap;
+    }
+
+    .price-installments span {
+      font-size: 5.4rem;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .price-cash {
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+    }
+
     .price-value {
       font-family: var(--font-heading);
       font-size: 6rem;
@@ -1308,8 +1342,8 @@
           Vagas Limitadas
         </div>
         <div class="price-strike">De R$ 7.500,00</div>
-        <div class="price-value"><span>R$</span>5.000</div>
-        <p style="color: var(--text-muted); margin-bottom: 3rem;">À vista ou em até 12x no cartão.</p>
+        <div class="price-installments"><small>12x R$</small><span>517,12</span></div>
+        <div class="price-cash">ou R$ 5.000 à vista</div>
         
         <a href="https://pay.hotmart.com/V71868782G?off=00xezj1n&checkoutMode=10" class="btn btn-red" style="width: 100%;">Garantir Minha Vaga Agora</a>
         

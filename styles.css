@@ -274,6 +274,42 @@ p {
   justify-content: space-between;
 }
 
+.navbar-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex: 1;
+  padding: 0 var(--space-md);
+}
+
+.navbar-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 12px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.86);
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
+}
+
+.navbar-links a:hover {
+  background: rgba(204, 0, 0, 0.18);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.navbar-links a:focus-visible {
+  outline: 3px solid rgba(204, 0, 0, 0.55);
+  outline-offset: 3px;
+}
+
 .navbar-logo {
   display: flex;
   align-items: center;
@@ -2123,9 +2159,31 @@ p {
     align-items: center;
   }
 
+  .hero {
+    padding-top: 130px;
+  }
+
   .navbar-cta {
     display: none;
     /* Evita vazamento lateral; no mobile temos o floating CTA de qualquer jeito */
+  }
+
+  .navbar .container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .navbar-links {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 var(--space-xs) 4px;
+    gap: 10px;
+  }
+
+  .navbar-links::-webkit-scrollbar {
+    height: 0;
   }
 
   .navbar-logo {

@@ -1762,7 +1762,7 @@ p {
 
 .price-current small {
   margin-top: 0.9rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1771,12 +1771,12 @@ p {
 }
 
 .price-current .amount {
-  font-size: 3.6rem;
+  font-size: 5.375rem;
   white-space: nowrap;
 }
 
 .price-installment {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--gray-mid);
   margin-bottom: var(--space-lg);
 }

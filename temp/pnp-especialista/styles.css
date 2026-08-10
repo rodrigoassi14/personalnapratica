@@ -2172,6 +2172,29 @@ p {
   transition-delay: 0.9s;
 }
 
+.grid-desktop-center-4col {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: 320px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .grid-desktop-center-4col {
+    max-width: 100%;
+  }
+}
+
+.grid-desktop-center-3col {
+  grid-column: 2 / 3;
+}
+
+@media (max-width: 1024px) {
+  .grid-desktop-center-3col {
+    grid-column: auto;
+  }
+}
+
 /* --- COUNT UP NUMBER --- */
 .count-up {
   font-variant-numeric: tabular-nums;

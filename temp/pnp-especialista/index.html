@@ -22,6 +22,7 @@
   <meta name="twitter:description" content="Domine a prescrição para Emagrecimento e Definição Muscular e aprenda a construir resultados de verdade.">
   <meta name="twitter:image" content="https://rodrigoassi14.github.io/personalnapratica/assets/bg-personal-na-pratica.png">
   <link rel="stylesheet" href="styles.css?v=20260607">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="assets/logo-personal-pensando-como-empresario.png">
 </head>
 
@@ -36,6 +37,7 @@
       </a>
       <div class="navbar-links" aria-label="Navegação">
         <a href="#hero">Início</a>
+        <a href="#video">Vídeo</a>
         <a href="#video-vendas">Método</a>
         <a href="#depoimentos">Depoimentos</a>
         <a href="#modulos">Conteúdo</a>
@@ -52,54 +54,47 @@
 
   <!-- ========== HERO SECTION ========== -->
   <section class="hero" id="hero">
-    <div class="hero-bg">
-      <picture>
-        <source media="(max-width: 768px)" srcset="assets/new-bg-mobile.png">
-        <img src="assets/new-bg.png" alt="" aria-hidden="true">
-      </picture>
-    </div>
+    <!-- Red Ambient Glow (padrão PNP Base) -->
+    <div class="hero-glow" aria-hidden="true"></div>
+
     <div class="container">
-      <div class="hero-content">
-        <span class="hero-badge">UNIVERSIDADE PERSONAL NA PRÁTICA • MÉTODO P.N.P.</span>
-        <h1>
-          <span class="text-red" style="
-    background: #ea0e0e;
-    color: #fff;
-    padding: 0.08em 0.18em;
-    border-radius: 0.12em;
-    display: inline;
-    line-height: 1.05;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-">PNP ESPECIALISTA</span><br>
-          <span style="font-size: 0.6em; font-weight: 600; letter-spacing: 0.08em;">APRENDA A APLICAR</span>
-        </h1>
-        <p style="font-size: 1.35rem; font-weight: 700; color: var(--color-ink-900); line-height: 1.25;">
-          Domine a prescrição para Emagrecimento e Definição Muscular e aprenda a construir resultados de verdade.
-        </p>
-        <p class="subtitle">
-          Construa programas de treinamento com periodização, estratégia e aplicação prática — deixando de copiar treinos para desenvolver protocolos que você sabe explicar, adaptar e evoluir.
-        </p>
-        <p style="text-align: left; font-weight: 700; color: var(--color-ink-800); margin-bottom: var(--space-md);">
-          Ciência aplicada + experiência de campo + resultados reais.
-        </p>
-        <div class="hero-cta-area">
-          <a href="#preco"
-            class="btn btn-primary btn-lg btn-pulse" id="hero-cta">
-            <!-- TODO: confirmar checkout PNP Especialista -->
-            QUERO ME TORNAR ESPECIALISTA
-          </a>
-          <div class="payment-badges">
-            <span>🔒 Compra segura</span>
-            <span>💳 Até 12x no cartão</span>
-            <span>⚡ Acesso imediato</span>
-          </div>
-          <p style="text-align: left; margin-top: var(--space-sm); font-size: 0.9rem; color: var(--color-ink-600);">
-            Formação 100% online • Acesso por 12 meses
+      <div class="hero-grid">
+        <!-- Text Content -->
+        <div class="hero-content">
+          <span class="hero-badge">UNIVERSIDADE PERSONAL NA PRÁTICA • MÉTODO P.N.P.</span>
+          <h1 class="hero-title">
+            <span class="hero-title-red">PNP ESPECIALISTA</span><br>
+            <span class="hero-title-sub">APRENDA A APLICAR</span>
+          </h1>
+          <p class="hero-lead">
+            Domine a prescrição para Emagrecimento e Definição Muscular e aprenda a construir resultados de verdade.
           </p>
+          <p class="subtitle">
+            Construa programas de treinamento com periodização, estratégia e aplicação prática — deixando de copiar treinos para desenvolver protocolos que você sabe explicar, adaptar e evoluir.
+          </p>
+          <p class="hero-tagline">
+            Ciência aplicada + experiência de campo + resultados reais.
+          </p>
+          <div class="hero-cta-area">
+            <a href="#preco" class="btn btn-primary btn-lg btn-pulse" id="hero-cta">
+              QUERO ME TORNAR ESPECIALISTA
+            </a>
+            <div class="payment-badges">
+              <span>🔒 Compra segura</span>
+              <span>💳 Até 12x no cartão</span>
+              <span>⚡ Acesso imediato</span>
+            </div>
+            <p class="hero-access-note">
+              Formação 100% online • Acesso por 12 meses
+            </p>
+          </div>
+        </div>
+
+        <!-- Hero Logo (lado direito, com glow + flutuar, padrão PNP Base) -->
+        <div class="hero-img-wrap" aria-hidden="true">
+          <img src="assets/logo-personal-pensando-como-empresario.png" alt="PNP Especialista" class="hero-logo">
         </div>
       </div>
-
     </div>
   </section>
 
@@ -140,6 +135,45 @@
       </div>
     </div>
   </div>
+
+  <!-- ========== SEÇÃO DE VÍDEO (cópia idêntica do PNP Base, vídeo Jaw7QljWhuU) ========== -->
+  <section id="video" class="video-section">
+    <div class="video-container">
+      <div class="video-grid">
+
+        <!-- Video Thumbnail / Iframe -->
+        <div class="video-wrap" id="video-wrap">
+          <!-- YouTube Thumbnail (visible initially) -->
+          <div id="video-cover" class="video-cover">
+            <img src="https://img.youtube.com/vi/Jaw7QljWhuU/maxresdefault.jpg" alt="Vídeo PNP Especialista" class="video-cover-img" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Jaw7QljWhuU/hqdefault.jpg';">
+            <div class="video-cover-overlay"></div>
+          </div>
+
+          <!-- Play Button (IRMÃO do cover, fora dele — referencia DIRETO o .video-wrap position:relative, sem conflitos) -->
+          <button type="button" id="video-play-circle" aria-label="Reproduzir vídeo"
+                  style="appearance:none;-webkit-appearance:none;display:flex;align-items:center;justify-content:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);width:80px;height:80px;min-width:80px;min-height:80px;max-width:80px;max-height:80px;border:2px solid rgba(255,255,255,0.30);border-radius:9999px;-webkit-border-radius:9999px;background-color:rgba(0,0,0,0.20);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);box-sizing:border-box;-webkit-box-sizing:border-box;z-index:10;pointer-events:auto;padding:0;margin:0;outline:0;cursor:pointer;transition:transform 150ms cubic-bezier(0.4,0,0.2,1),border-color 150ms ease,background-color 150ms ease;-webkit-transition:transform 150ms cubic-bezier(0.4,0,0.2,1),border-color 150ms ease,background-color 150ms ease;">
+            <i class="fa-solid fa-play" id="video-play-icon" aria-hidden="true"
+               style="display:inline-block;color:#ffffff;font-size:24px;line-height:1;width:24px;height:24px;margin:0 0 0 4px;padding:0;border:0;outline:0;text-align:center;background:transparent;"></i>
+          </button>
+
+          <!-- YouTube Iframe (hidden initially) -->
+          <iframe id="video-iframe" class="video-iframe" src="" title="Vídeo PNP Especialista" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <!-- Text side -->
+        <div class="video-copy">
+          <h2>Assista ao <span class="accent">vídeo</span> e entenda</h2>
+          <p>
+            A especialização começa por dominar protocolos que geram resultado real. Descubra como o PNP Especialista ensina você a aplicar prescrição estratégica para emagrecimento e hipertrofia, com confiança, embasamento e método.
+          </p>
+          <button id="btn-assistir" class="btn-assistir">
+            ASSISTIR AGORA <i class="fa-solid fa-caret-right"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- ========== DOR / QUEBRA DE PADRÃO (video-vendas ID) ========== -->
   <section class="section sales-video-section" id="video-vendas">
@@ -967,6 +1001,122 @@
   </div>
 
   <script src="script.js?v=20260607" defer></script>
+
+  <!-- Inicialização INFALÍVEL da seção de vídeo (executa após DOM completo) -->
+  <!-- Faz: 1ª clique = mostra iframe + autoplay / cliques seguintes = TOGGLE play/pause SEM recarregar (nunca reinicia) / Botão ASSISTIR AGORA = sempre play + scroll -->
+  <script id="video-section-inline-init" defer>
+  (function () {
+    if (window.__pnpVideoSectionInited) return;
+    window.__pnpVideoSectionInited = true;
+
+    function run() {
+      var wrap   = document.getElementById('video-wrap');
+      var cover  = document.getElementById('video-cover');
+      var playC  = document.getElementById('video-play-circle');
+      var iframe = document.getElementById('video-iframe');
+      var btn    = document.getElementById('btn-assistir');
+      var navbar = document.getElementById('navbar');
+      if (!wrap || !iframe) return;
+
+      var VIDEO_EMBED = 'https://www.youtube.com/embed/Jaw7QljWhuU';
+      var ORIGIN = (window.location.origin || '').replace(/\/$/, '');
+
+      var state = { loaded: false, playing: false, activated: false };
+
+      function activate() {
+        if (!state.activated) {
+          state.activated = true;
+          wrap.classList.add('is-video-active');
+        }
+      }
+
+      window.addEventListener('message', function (e) {
+        try {
+          if (!e || !e.data || typeof e.data !== 'string') return;
+          var d = JSON.parse(e.data);
+          if (!d || d.event !== 'onStateChange') return;
+          if (d.info === 1) state.playing = true;
+          else if (d.info === 2) state.playing = false;
+          else if (d.info === 0) state.playing = false;
+        } catch (_) {}
+      }, false);
+
+      function cmd(funcName) {
+        try {
+          if (iframe && iframe.contentWindow) {
+            iframe.contentWindow.postMessage(
+              JSON.stringify({ event: 'command', func: funcName, args: [], id: 'pnp-video' }),
+              '*'
+            );
+          }
+        } catch (_) {}
+      }
+
+      function play() {
+        if (!state.loaded) {
+          state.loaded = true;
+          var qs = [
+            'autoplay=1',
+            'rel=0',
+            'modestbranding=1',
+            'playsinline=1',
+            'enablejsapi=1',
+            ORIGIN ? ('origin=' + encodeURIComponent(ORIGIN)) : '',
+            'widgetid=1'
+          ].filter(Boolean).join('&');
+          iframe.src = VIDEO_EMBED + '?' + qs;
+          activate();
+          iframe.onload = function () {
+            try {
+              iframe.contentWindow.postMessage(
+                JSON.stringify({ event: 'listening', id: 'pnp-video' }),
+                '*'
+              );
+            } catch (_) {}
+          };
+          state.playing = true;
+          return;
+        }
+        activate();
+        cmd('playVideo');
+        state.playing = true;
+      }
+
+      function pause() {
+        if (!state.loaded) return;
+        cmd('pauseVideo');
+        state.playing = false;
+      }
+
+      function handleToggle(e) {
+        if (e) { try { e.preventDefault(); } catch (_) {} try { e.stopPropagation(); } catch (_) {} }
+        if (state.playing) pause();
+        else play();
+      }
+
+      if (cover)  cover.addEventListener('click', handleToggle, false);
+      if (playC)  playC.addEventListener('click', handleToggle, false);
+
+      if (btn) {
+        btn.addEventListener('click', function () {
+          play();
+          var navH = (navbar && navbar.offsetHeight) ? navbar.offsetHeight + 12 : 80;
+          var section = document.getElementById('video');
+          if (section) {
+            var top = section.getBoundingClientRect().top + window.pageYOffset - navH;
+            try { window.scrollTo({ top: top, behavior: 'smooth' }); } catch (_) { window.scrollTo(0, top); }
+          }
+        }, false);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', run, false);
+    } else {
+      run();
+    }
+  })();
+  </script>
 </body>
 
 </html>

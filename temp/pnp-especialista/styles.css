@@ -383,40 +383,33 @@ p {
 }
 
 /* --- HERO SECTION --- */
+/* ===== HERO — padrão PNP Base (sem imagem de fundo do expert) ===== */
 .hero {
   position: relative;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding-top: 80px;
+  padding-top: 160px;
+  padding-bottom: 128px;
+  background-color: #050505;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.hero-bg {
+/* Glow ambiental vermelho no canto superior direito (igual PNP Base) */
+.hero-glow {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  width: 75%;
+  height: 800px;
+  background: var(--red-primary);
+  opacity: 0.20;
+  filter: blur(150px);
+  border-radius: 9999px;
+  pointer-events: none;
+  transform: translate(25%, -25%);
   z-index: 0;
 }
-
-.hero-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  /* Apenas escurece a esquerda para legibilidade do texto; direita fica limpa para o expert aparecer */
-  background: linear-gradient(90deg,
-      rgba(5, 5, 5, 0.82) 0%,
-      rgba(5, 5, 5, 0.55) 35%,
-      rgba(5, 5, 5, 0.15) 55%,
-      transparent 70%);
-}
-
-/* Red glow removido — já vem do novo background */
 
 .hero .container {
   position: relative;
@@ -424,11 +417,129 @@ p {
   display: block;
 }
 
+/* Grid texto (esq) + logo (dir) — lg:grid-cols-2 */
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 48px;
+  align-items: center;
+}
+
 .hero-content {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  max-width: 52%;
+  max-width: 100%;
+}
+
+/* Título principal — similar ao destaque inline do layout original */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin: 0;
+}
+
+.hero-title-red {
+  background: #ea0e0e;
+  color: #fff;
+  padding: 0.08em 0.18em;
+  border-radius: 0.12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.hero-title-sub {
+  display: inline-block;
+  font-size: 0.5em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: #d1d5db;
+  margin-top: 4px;
+}
+
+.hero-lead {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #e5e7eb;
+  line-height: 1.25;
+}
+
+.hero-tagline {
+  text-align: left;
+  font-weight: 700;
+  color: #cbd5e1;
+  margin-bottom: var(--space-md);
+}
+
+.hero-access-note {
+  text-align: left;
+  margin-top: var(--space-sm);
+  font-size: 0.9rem;
+  color: var(--gray-mid);
+}
+
+/* ===== Hero Logo / Imagem com glow e flutuar (padrão PNP Base) ===== */
+.hero-img-wrap {
+  position: relative;
+  width: 100%;
+  min-width: 380px;
+  max-width: 520px;
+  min-height: 540px;
+  display: none; /* só exibe em >= lg */
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+
+.hero-img-wrap::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 72%;
+  aspect-ratio: 1 / 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, rgba(217, 35, 35, 0.32) 0%, rgba(217, 35, 35, 0.12) 40%, rgba(217, 35, 35, 0) 70%);
+  filter: blur(60px);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.hero-logo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+  transition: transform 280ms ease, filter 280ms ease;
+  filter: drop-shadow(0 35px 35px rgba(217, 35, 35, 0.22)) drop-shadow(0 20px 30px rgba(0, 0, 0, 0.55));
+  animation: heroFloat 4.8s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@keyframes heroFloat {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-12px) scale(1); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+.hero-logo:hover {
+  animation-play-state: paused;
+  transform: translateY(-6px) scale(1.04);
+}
+
+@media (min-width: 1025px) {
+  .hero-img-wrap {
+    display: flex;
+  }
 }
 
 .hero-badge {
@@ -2266,8 +2377,13 @@ p {
    ============================================= */
 
 @media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
   .hero-content {
-    max-width: 65%;
+    max-width: 100%;
     text-align: left;
   }
 
@@ -2313,39 +2429,25 @@ p {
 
 @media (max-width: 768px) {
   .hero {
-    /* tall enough to show text area + expert image in bg */
-    min-height: 100svh;
-    padding-top: 90px;
-    padding-bottom: 0;
+    min-height: auto;
+    padding-top: 120px;
+    padding-bottom: 80px;
     align-items: flex-start;
   }
 
-  /* On mobile the picture/img inside hero-bg should be anchored to the top
-     so the dark gym ceiling shows at the top (text area) and the expert
-     appears in the lower half of the background */
-  .hero-bg img {
-    object-position: top center;
-  }
-
-  /* Change the overlay direction: opaque at top (text readable),
-     transparent toward the middle/bottom (expert visible) */
-  .hero-bg::after {
-    background: linear-gradient(180deg,
-        rgba(5, 5, 5, 0.80) 0%,
-        rgba(5, 5, 5, 0.55) 30%,
-        rgba(5, 5, 5, 0.15) 55%,
-        transparent 72%);
-  }
-
-  .hero .container {
-    padding-bottom: 56svh;
-    /* leave lower half free for the expert in bg */
+  .hero-grid {
+    grid-template-columns: 1fr;
   }
 
   .hero-content {
     max-width: 100%;
     text-align: center;
     align-items: center;
+  }
+
+  .hero-tagline,
+  .hero-access-note {
+    text-align: center;
   }
 
   .navbar-cta {
@@ -2643,9 +2745,9 @@ p {
 /* Fix for shorter mobile screens (like iPhone SE - 667px height) */
 @media (max-width: 768px) and (max-height: 720px) {
   .hero {
-    min-height: 850px;
-    /* Expande bastante o fundo e empurra o expert para baixo */
-    padding-top: 60px;
+    min-height: auto;
+    padding-top: 90px;
+    padding-bottom: 60px;
   }
 
   .hero-content {
@@ -2653,10 +2755,10 @@ p {
   }
 
   .hero .container {
-    padding-bottom: 20px;
+    padding-bottom: 0;
   }
 
-  .hero h1 {
+  .hero-title {
     font-size: 1.8rem;
     line-height: 1.1;
   }
@@ -2680,4 +2782,222 @@ p {
     font-size: 0.7rem;
     gap: 8px;
   }
+}
+
+/* ===== SEÇÃO DE VÍDEO (cópia idêntica do PNP Base, adaptado variáveis) ===== */
+.video-section {
+  position: relative;
+  padding: 80px 0;
+  background-color: var(--bg-black);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.video-container {
+  width: 100%;
+  max-width: 1152px; /* max-w-6xl = 72rem = 1152px */
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .video-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .video-wrap { grid-column: span 3; }
+  .video-copy { grid-column: span 2; }
+}
+
+.video-wrap {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+  aspect-ratio: 16 / 9 !important;
+  -webkit-aspect-ratio: 16 / 9;
+  background: #09090b !important;
+  z-index: 1 !important;
+}
+
+.video-cover {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  cursor: pointer !important;
+  z-index: 2 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+}
+
+.video-cover-img {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.video-cover-overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 3 !important;
+  background: rgba(0, 0, 0, 0.40) !important;
+  transition: background-color 180ms ease !important;
+  pointer-events: none !important;
+}
+
+.video-cover:hover .video-cover-overlay {
+  background: rgba(0, 0, 0, 0.20) !important;
+}
+
+/* Hover: pairar no video-cover OU no próprio play circle → scale 1.1 no círculo + borda mais clara */
+.video-wrap:hover #video-play-circle,
+.video-wrap:hover > #video-play-circle {
+  transform: translate(-50%, -50%) scale(1.10) !important;
+  -webkit-transform: translate(-50%, -50%) scale(1.10) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Font Awesome Solid garantido para o ícone */
+#video-play-icon {
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", sans-serif !important;
+  font-weight: 900 !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+#video-play-icon::before {
+  content: "\f04b" !important;  /* Unicode FA do play sólido */
+}
+
+.video-iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+  display: none; /* inicial = oculto */
+  visibility: hidden;
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: #000 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Classe adicionada via JS quando o play é acionado pela 1ª vez: iframe aparece na frente, capa + play saem */
+.video-wrap.is-video-active .video-iframe {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 50 !important;
+  pointer-events: auto !important;
+}
+
+.video-wrap.is-video-active .video-cover {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+.video-wrap.is-video-active #video-play-circle {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+.video-copy h2 {
+  font-family: var(--font-display);
+  font-size: 1.875rem; /* 30px */
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.video-copy h2 .accent {
+  color: var(--red-primary);
+}
+
+.video-copy p {
+  color: #9ca3af;
+  font-weight: 300;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+  .video-copy h2 { font-size: 1.875rem; }
+}
+
+.btn-assistir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--red-primary);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background-color 180ms ease, transform 180ms ease;
+  box-shadow: 0 0 20px rgba(217, 35, 35, 0.4);
+}
+
+.btn-assistir:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(217, 35, 35, 0.6);
+}
+
+.btn-assistir i {
+  font-size: 1.125rem;
+  line-height: 1;
 }

@@ -22,6 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* ===== RESET & CUSTOM PROPERTIES ===== */
     :root {
@@ -273,6 +274,226 @@
       height: 100%;
       display: block;
       border: 0;
+    }
+
+    /* ===== SEÇÃO DE VÍDEO (PADRÃO PNP BASE / PNP ESPECIALISTA) ===== */
+    .video-section {
+      position: relative;
+      padding: 80px 0;
+      background-color: var(--bg-black);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .video-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+      .video-wrap { grid-column: span 3; }
+      .video-copy { grid-column: span 2; }
+    }
+
+    .video-wrap {
+      position: relative !important;
+      display: block !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      border: 1px solid rgba(255, 255, 255, 0.10) !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+      aspect-ratio: 16 / 9 !important;
+      background: #09090b !important;
+      z-index: 1 !important;
+    }
+
+    .video-cover {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      display: block !important;
+      cursor: pointer !important;
+      z-index: 2 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      background: transparent !important;
+      border: 0 !important;
+      outline: 0 !important;
+    }
+
+    .video-cover-img {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+    }
+
+    .video-cover-overlay {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      z-index: 3 !important;
+      background: rgba(0, 0, 0, 0.40) !important;
+      transition: background-color 180ms ease !important;
+      pointer-events: none !important;
+    }
+
+    .video-cover:hover .video-cover-overlay {
+      background: rgba(0, 0, 0, 0.20) !important;
+    }
+
+    /* Hover: pairar no video-wrap → scale(1.1) no círculo + borda mais clara */
+    .video-wrap:hover #video-play-circle,
+    .video-wrap:hover > #video-play-circle {
+      transform: translate(-50%, -50%) scale(1.10) !important;
+      -webkit-transform: translate(-50%, -50%) scale(1.10) !important;
+      border-color: rgba(255, 255, 255, 0.45) !important;
+    }
+
+    /* Font Awesome Solid garantido para o ícone */
+    #video-play-icon {
+      font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", sans-serif !important;
+      font-weight: 900 !important;
+      font-style: normal !important;
+      font-variant: normal !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+    }
+    #video-play-icon::before {
+      content: "\f04b" !important;
+    }
+
+    .video-iframe {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      border: 0 !important;
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: #000 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      overflow: hidden !important;
+    }
+
+    .video-wrap.is-video-active .video-iframe {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      z-index: 50 !important;
+      pointer-events: auto !important;
+    }
+
+    .video-wrap.is-video-active .video-cover {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      z-index: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .video-wrap.is-video-active #video-play-circle {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      z-index: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .video-copy h2 {
+      font-family: "Outfit", "Inter", system-ui, sans-serif;
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .video-copy h2 .accent {
+      color: var(--red);
+    }
+
+    .video-copy p {
+      color: #9ca3af;
+      font-weight: 300;
+      margin-bottom: 32px;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .video-copy h2 { font-size: 1.875rem; }
+    }
+
+    .btn-assistir {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--red);
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      font-family: "Outfit", "Inter", system-ui, sans-serif;
+      transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+      -webkit-transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+      box-shadow: 0 0 20px rgba(230, 32, 32, 0.4);
+    }
+
+    .btn-assistir:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+      -webkit-transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(230, 32, 32, 0.6);
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .btn-assistir i {
+      font-size: 1.125rem;
+      line-height: 1;
     }
 
     /* ===== HERO SECTION (ASYMMETRICAL) ===== */
@@ -1084,16 +1305,42 @@
     </div>
   </div>
 
-  <section class="section container video-vendas-section" id="video">
-    <div class="tag-label reveal">Vídeo</div>
-    <h2 class="title-lg reveal">Assista ao <br><span class="">vídeo</span></h2>
-    <div class="video-vendas-frame reveal" style="margin-top: 1.5rem;">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/9O_13yhnokM?rel=0&modestbranding=1"
-        title="Vídeo — Mentoria Personal na Prática"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen></iframe>
+  <!-- SEÇÃO DE VÍDEO (PADRÃO PNP BASE / PNP ESPECIALISTA) -->
+  <section id="video" class="video-section">
+    <div class="video-container">
+      <div class="video-grid">
+
+        <!-- Video Thumbnail / Iframe -->
+        <div class="video-wrap" id="video-wrap">
+          <!-- YouTube Thumbnail (visible initially) -->
+          <div id="video-cover" class="video-cover">
+            <img src="https://img.youtube.com/vi/9O_13yhnokM/maxresdefault.jpg" alt="Vídeo Mentoria Personal na Prática" class="video-cover-img" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/9O_13yhnokM/hqdefault.jpg';">
+            <div class="video-cover-overlay"></div>
+          </div>
+
+          <!-- Play Button (centralizado infalível via style inline) -->
+          <button type="button" id="video-play-circle" aria-label="Reproduzir vídeo"
+                  style="appearance:none;-webkit-appearance:none;display:flex;align-items:center;justify-content:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);width:80px;height:80px;min-width:80px;min-height:80px;max-width:80px;max-height:80px;border:2px solid rgba(255,255,255,0.30);border-radius:9999px;-webkit-border-radius:9999px;background-color:rgba(0,0,0,0.20);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);box-sizing:border-box;-webkit-box-sizing:border-box;z-index:10;pointer-events:auto;padding:0;margin:0;outline:0;cursor:pointer;transition:transform 150ms cubic-bezier(0.4,0,0.2,1),border-color 150ms ease,background-color 150ms ease;-webkit-transition:transform 150ms cubic-bezier(0.4,0,0.2,1),border-color 150ms ease,background-color 150ms ease;">
+            <i class="fa-solid fa-play" id="video-play-icon" aria-hidden="true"
+               style="display:inline-block;color:#ffffff;font-size:24px;line-height:1;width:24px;height:24px;margin:0 0 0 4px;padding:0;border:0;outline:0;text-align:center;background:transparent;"></i>
+          </button>
+
+          <!-- YouTube Iframe (hidden initially) -->
+          <iframe id="video-iframe" class="video-iframe" src="" title="Vídeo Mentoria Personal na Prática" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <!-- Text side -->
+        <div class="video-copy">
+          <h2>Assista ao <span class="accent">vídeo</span> e entenda</h2>
+          <p>
+            A Mentoria Personal na Prática é o programa ao vivo onde você aprende a transformar sua técnica em um negócio rentável, previsível e escalável. Rodrigo Assi te guia em tempo real, terça a terça, pelas etapas de captação, vendas, retenção e crescimento.
+          </p>
+          <button id="btn-assistir" class="btn-assistir">
+            ASSISTIR AGORA <i class="fa-solid fa-caret-right"></i>
+          </button>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -1425,6 +1672,123 @@
         revealOnScroll.observe(reveal);
       });
     });
+  </script>
+
+  <!-- Seção de vídeo: inicialização infalível (padrão PNP Base / Especialista) -->
+  <!-- 1º clique: mostra iframe + autoplay | cliques seguintes: TOGGLE play/pause SEM recarregar | Botão ASSISTIR AGORA: sempre play + scroll -->
+  <script id="video-section-inline-init" defer>
+  (function () {
+    if (window.__pnpVideoSectionInited) return;
+    window.__pnpVideoSectionInited = true;
+
+    function run() {
+      var wrap   = document.getElementById('video-wrap');
+      var cover  = document.getElementById('video-cover');
+      var playC  = document.getElementById('video-play-circle');
+      var iframe = document.getElementById('video-iframe');
+      var btn    = document.getElementById('btn-assistir');
+      var navbar = document.querySelector('.navbar');
+      if (!wrap || !iframe) return;
+
+      var VIDEO_ID  = '9O_13yhnokM';
+      var VIDEO_EMBED = 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID;
+      var ORIGIN = (window.location.origin || '').replace(/\/$/, '');
+
+      var state = { loaded: false, playing: false, activated: false };
+
+      function activate() {
+        if (!state.activated) {
+          state.activated = true;
+          wrap.classList.add('is-video-active');
+        }
+      }
+
+      window.addEventListener('message', function (e) {
+        try {
+          if (!e || !e.data || typeof e.data !== 'string') return;
+          var d = JSON.parse(e.data);
+          if (!d || d.event !== 'onStateChange') return;
+          if (d.info === 1) state.playing = true;
+          else if (d.info === 2) state.playing = false;
+          else if (d.info === 0) state.playing = false;
+        } catch (_) {}
+      }, false);
+
+      function cmd(funcName) {
+        try {
+          if (iframe && iframe.contentWindow) {
+            iframe.contentWindow.postMessage(
+              JSON.stringify({ event: 'command', func: funcName, args: [], id: 'pnp-video' }),
+              '*'
+            );
+          }
+        } catch (_) {}
+      }
+
+      function play() {
+        if (!state.loaded) {
+          state.loaded = true;
+          var qs = [
+            'autoplay=1',
+            'rel=0',
+            'modestbranding=1',
+            'playsinline=1',
+            'enablejsapi=1',
+            ORIGIN ? ('origin=' + encodeURIComponent(ORIGIN)) : '',
+            'widgetid=1'
+          ].filter(Boolean).join('&');
+          iframe.src = VIDEO_EMBED + '?' + qs;
+          activate();
+          iframe.onload = function () {
+            try {
+              iframe.contentWindow.postMessage(
+                JSON.stringify({ event: 'listening', id: 'pnp-video' }),
+                '*'
+              );
+            } catch (_) {}
+          };
+          state.playing = true;
+          return;
+        }
+        activate();
+        cmd('playVideo');
+        state.playing = true;
+      }
+
+      function pause() {
+        if (!state.loaded) return;
+        cmd('pauseVideo');
+        state.playing = false;
+      }
+
+      function handleToggle(e) {
+        if (e) { try { e.preventDefault(); } catch (_) {} try { e.stopPropagation(); } catch (_) {} }
+        if (state.playing) pause();
+        else play();
+      }
+
+      if (cover)  cover.addEventListener('click', handleToggle, false);
+      if (playC)  playC.addEventListener('click', handleToggle, false);
+
+      if (btn) {
+        btn.addEventListener('click', function () {
+          play();
+          var navH = (navbar && navbar.offsetHeight) ? navbar.offsetHeight + 12 : 80;
+          var section = document.getElementById('video');
+          if (section) {
+            var top = section.getBoundingClientRect().top + window.pageYOffset - navH;
+            try { window.scrollTo({ top: top, behavior: 'smooth' }); } catch (_) { window.scrollTo(0, top); }
+          }
+        }, false);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', run, false);
+    } else {
+      run();
+    }
+  })();
   </script>
 </body>
 </html>

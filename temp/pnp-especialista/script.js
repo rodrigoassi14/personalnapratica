@@ -368,8 +368,126 @@ function initLandingPage() {
     if (restartBtn) restartBtn.addEventListener('click', restart);
     restart();
   }
-
 }
+
+// ============================================================
+// SEÇÃO DE VÍDEO — init próprio (FORA da initLandingPage)
+// Executa logo após o DOM estar pronto
+// ============================================================
+(function initVideoSection() {
+  if (typeof document === 'undefined') return;
+
+  function run() {
+    const wrap = document.getElementById('video-wrap');
+    const cover = document.getElementById('video-cover');
+    const playCircle = document.getElementById('video-play-circle');
+    const iframe = document.getElementById('video-iframe');
+    const btn = document.getElementById('btn-assistir');
+    if (!wrap || !iframe) return;
+
+    const VIDEO_EMBED = 'https://www.youtube.com/embed/Jaw7QljWhuU';
+    const ORIGIN = (window.location.origin || '').replace(/\/$/, '');
+    const navbar = document.getElementById('navbar');
+
+    let state = {
+      loaded: false,
+      playing: false,
+      activated: false,
+    };
+
+    function activate() {
+      if (!state.activated) {
+        state.activated = true;
+        wrap.classList.add('is-video-active');
+      }
+    }
+
+    function onYtStateChange(e) {
+      try {
+        if (!e || !e.data || typeof e.data !== 'string') return;
+        const d = JSON.parse(e.data);
+        if (!d || d.event !== 'onStateChange') return;
+        if (d.info === 1) state.playing = true;
+        else if (d.info === 2) state.playing = false;
+        else if (d.info === 0) state.playing = false;
+      } catch (_) {}
+    }
+    if (window.addEventListener) window.addEventListener('message', onYtStateChange, false);
+
+    function cmd(funcName) {
+      try {
+        if (iframe && iframe.contentWindow) {
+          iframe.contentWindow.postMessage(
+            JSON.stringify({ event: 'command', func: funcName, args: [], id: 'pnp-video' }),
+            '*'
+          );
+        }
+      } catch (_) {}
+    }
+
+    function play() {
+      if (!state.loaded) {
+        state.loaded = true;
+        const qs = [
+          'autoplay=1',
+          'rel=0',
+          'modestbranding=1',
+          'playsinline=1',
+          'enablejsapi=1',
+          ORIGIN ? ('origin=' + encodeURIComponent(ORIGIN)) : '',
+          'widgetid=1'
+        ].filter(Boolean).join('&');
+        iframe.src = VIDEO_EMBED + '?' + qs;
+        activate();
+        iframe.onload = function () {
+          try {
+            iframe.contentWindow.postMessage(
+              JSON.stringify({ event: 'listening', id: 'pnp-video' }),
+              '*'
+            );
+          } catch (_) {}
+        };
+        state.playing = true;
+        return;
+      }
+      activate();
+      cmd('playVideo');
+      state.playing = true;
+    }
+
+    function pause() {
+      if (!state.loaded) return;
+      cmd('pauseVideo');
+      state.playing = false;
+    }
+
+    function handleToggleClick(e) {
+      if (e) { try { e.preventDefault(); } catch (_) {} try { e.stopPropagation(); } catch (_) {} }
+      if (state.playing) pause();
+      else play();
+    }
+    if (cover) cover.addEventListener('click', handleToggleClick, false);
+    if (playCircle) playCircle.addEventListener('click', handleToggleClick, false);
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        play();
+        const navH = (navbar && navbar.offsetHeight) ? navbar.offsetHeight + 12 : 80;
+        const section = document.getElementById('video');
+        if (section) {
+          const top = section.getBoundingClientRect().top + window.pageYOffset - navH;
+          try { window.scrollTo({ top: top, behavior: 'smooth' }); } catch (_) { window.scrollTo(0, top); }
+        }
+      }, false);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run, false);
+  } else {
+    run();
+  }
+})();
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initLandingPage);

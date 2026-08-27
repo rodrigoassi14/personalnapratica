@@ -1183,6 +1183,127 @@
                 font-size: 11px;
             }
         }
+
+        /* ===== TESTIMONIALS / DEPOIMENTOS (adaptado do PNP Especialista) ===== */
+        .depo-section {
+            background: #0A0A0A;
+            padding: 96px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .depo-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .depo-header {
+            text-align: center;
+            margin-bottom: 64px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .depo-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+        }
+        .depo-header h2 {
+            font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0;
+        }
+        .depo-header h2 .text-red { color: #D92323; }
+        .depo-header p {
+            margin-top: 16px;
+            color: #9ca3af;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .depo-videos {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .depo-video {
+            background: #141414;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+        }
+        .depo-video:first-child {
+            grid-column: 1 / -1;
+        }
+        .depo-poster {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: grid;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            position: relative;
+        }
+        .depo-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .depo-poster-play {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 74px;
+            height: 74px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.55);
+            border: 2px solid rgba(255, 255, 255, 0.28);
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
+            transition: transform 0.18s ease, border-color 0.18s ease;
+        }
+        .depo-poster-play::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-42%, -50%);
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left: 18px solid rgba(255, 255, 255, 0.92);
+        }
+        .depo-poster:hover .depo-poster-play {
+            transform: translate(-50%, -50%) scale(1.03);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        .depo-poster:focus-visible {
+            outline: 3px solid rgba(217, 35, 35, 0.55);
+            outline-offset: 3px;
+        }
+        .depo-video iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
+            border: 0;
+        }
+        @media (max-width: 768px) {
+            .depo-videos { grid-template-columns: 1fr; }
+            .depo-section { padding: 64px 0; }
+        }
     </style>
 </head>
 <body class="font-sans overflow-x-hidden">
@@ -1200,6 +1321,7 @@
             <nav class="nav-links" aria-label="Navegação principal">
                 <a href="#inicio">Início</a>
                 <a href="#conteudo">Conteúdo</a>
+                <a href="#depoimentos">Depoimentos</a>
                 <a href="#sobre">Sobre</a>
                 <a href="#diferencial">Diferencial</a>
                 <a href="#faq">FAQ</a>
@@ -1278,24 +1400,20 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
             <div class="grid md:grid-cols-5 gap-12 items-center">
                 
-                <!-- Video Thumbnail -->
-                <div class="md:col-span-3 relative rounded-xl overflow-hidden border border-white/10 shadow-2xl group cursor-pointer aspect-video bg-zinc-900">
-                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop" alt="Video cover" class="w-full h-full object-cover grayscale opacity-70">
-                    
-                    <!-- Fake overlay text like in mockup -->
-                    <div class="absolute inset-0 p-8 flex flex-col justify-center z-20">
-                        <h3 class="text-3xl md:text-4xl font-black text-white leading-tight uppercase max-w-sm">
-                            TODO TREINO COMEÇA MUITO ANTES DO <span class="text-brand-red">PRIMEIRO EXERCÍCIO</span>
-                        </h3>
-                    </div>
-
-                    <!-- Play Button -->
-                    <div class="absolute inset-0 flex items-center justify-center z-30">
-                        <div class="w-20 h-20 rounded-full border-2 border-white/30 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
-                            <i class="fas fa-play text-white text-2xl ml-1"></i>
+                <!-- Video Thumbnail / Iframe -->
+                <div class="md:col-span-3 relative rounded-xl overflow-hidden border border-white/10 shadow-2xl aspect-video bg-zinc-900">
+                    <!-- YouTube Thumbnail (visible initially) -->
+                    <div id="video-cover" class="absolute inset-0 group cursor-pointer">
+                        <img src="https://img.youtube.com/vi/nKqp-yJqWD0/maxresdefault.jpg" alt="Vídeo PNP Base" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/nKqp-yJqWD0/hqdefault.jpg';">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-20 h-20 rounded-full border-2 border-white/30 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform bg-black/20">
+                                <i class="fas fa-play text-white text-2xl ml-1"></i>
+                            </div>
                         </div>
                     </div>
+                    <!-- YouTube Iframe (hidden initially) -->
+                    <iframe id="video-iframe" class="absolute inset-0 w-full h-full hidden" src="" title="Vídeo PNP Base" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
 
                 <!-- Text side -->
@@ -1304,9 +1422,9 @@
                     <p class="text-gray-400 font-light mb-8 leading-relaxed">
                         O treino começa na avaliação. É na forma como você entende o aluno, identifica o que realmente importa e constrói a prescrição que nascem os resultados. Aprenda a pensar antes de prescrever.
                     </p>
-                    <a href="#oferta" class="inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-brand-red-hover text-white px-6 py-3 rounded text-sm font-bold uppercase transition-colors">
+                    <button id="btn-assistir" class="inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-brand-red-hover text-white px-6 py-3 rounded text-sm font-bold uppercase transition-colors">
                         ASSISTIR AGORA <i class="fas fa-caret-right text-lg"></i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1473,6 +1591,46 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTS / TESTIMONIALS (cópia adaptada do PNP Especialista) -->
+    <section id="depoimentos" class="depo-section">
+        <div class="depo-container">
+            <div class="depo-header">
+                <span class="depo-label">Prova social</span>
+                <h2>Quem já viveu o <span class="text-red">Personal na Prática</span></h2>
+                <p>Resultados reais de profissionais que aplicaram o método.</p>
+            </div>
+            <div class="depo-videos">
+                <div class="depo-video">
+                    <button class="depo-poster" type="button"
+                        data-video-src="https://www.youtube-nocookie.com/embed/jRqNaoS0RLo?modestbranding=1"
+                        data-video-title="Depoimento — Alunos do método"
+                        aria-label="Reproduzir depoimento — Alunos do método">
+                        <img src="imgs/depoimento-1.png" alt="Depoimento — Alunos do método" loading="lazy">
+                        <span class="depo-poster-play" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="depo-video">
+                    <button class="depo-poster" type="button"
+                        data-video-src="https://www.youtube-nocookie.com/embed/UbKBGSbag8Y?modestbranding=1"
+                        data-video-title="Depoimentos — O que estão dizendo do Rodrigo Assi"
+                        aria-label="Reproduzir depoimentos — O que estão dizendo do Rodrigo Assi">
+                        <img src="imgs/depoimento-2.png" alt="Depoimentos — O que estão dizendo do Rodrigo Assi" loading="lazy">
+                        <span class="depo-poster-play" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="depo-video">
+                    <button class="depo-poster" type="button"
+                        data-video-src="https://www.youtube-nocookie.com/embed/3NqRfaWIvsU?modestbranding=1"
+                        data-video-title="Depoimento — Fernando"
+                        aria-label="Reproduzir depoimento — Fernando">
+                        <img src="imgs/depoimento-3.png" alt="Depoimento — Fernando" loading="lazy">
+                        <span class="depo-poster-play" aria-hidden="true"></span>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -2009,6 +2167,59 @@
                         window.scrollTo({ top, behavior: "smooth" });
                     }
                 }
+            });
+        });
+
+        // YouTube video play handler
+        const videoCover = document.getElementById("video-cover");
+        const videoIframe = document.getElementById("video-iframe");
+        const btnAssistir = document.getElementById("btn-assistir");
+        const videoSrc = "https://www.youtube.com/embed/nKqp-yJqWD0?autoplay=1&rel=0&modestbranding=1";
+
+        function playVideo() {
+            if (videoCover && videoIframe) {
+                videoCover.classList.add("hidden");
+                videoIframe.classList.remove("hidden");
+                videoIframe.src = videoSrc;
+            }
+        }
+
+        if (videoCover) {
+            videoCover.addEventListener("click", playVideo);
+        }
+
+        if (btnAssistir) {
+            btnAssistir.addEventListener("click", function () {
+                playVideo();
+                const offset = siteHeader ? (siteHeader.offsetHeight + 12) : 80;
+                const videoSection = document.getElementById("video");
+                if (videoSection) {
+                    const top = videoSection.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: "smooth" });
+                }
+            });
+        }
+
+        // Depoimentos — poster → iframe com autoplay (igual ao PNP Especialista)
+        const depoPosters = document.querySelectorAll('.depo-poster[data-video-src]');
+        depoPosters.forEach(function (poster) {
+            poster.addEventListener('click', function () {
+                const wrapper = poster.closest('.depo-video');
+                const videoSrc = poster.getAttribute('data-video-src');
+                const videoTitle = poster.getAttribute('data-video-title') || 'Vídeo';
+                if (!wrapper || !videoSrc) return;
+
+                const iframe = document.createElement('iframe');
+                const sep = videoSrc.indexOf('?') !== -1 ? '&' : '?';
+                iframe.src = videoSrc + sep + 'autoplay=1&rel=0&playsinline=1';
+                iframe.title = videoTitle;
+                iframe.loading = 'lazy';
+                iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.allowFullscreen = true;
+
+                wrapper.innerHTML = '';
+                wrapper.appendChild(iframe);
             });
         });
     </script>

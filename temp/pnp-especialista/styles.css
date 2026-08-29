@@ -251,134 +251,192 @@ p {
   animation: pulse-glow 2s infinite;
 }
 
-/* --- Navbar --- */
+/* --- Navbar (PATRAO MENTORIA P.N.P. — float pill centralizado) --- */
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
   z-index: 1000;
-  padding: var(--space-sm) 0;
-  transition: background var(--transition-medium), box-shadow var(--transition-medium);
 }
 
 .navbar.scrolled {
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  /* Estilo de scrolled igual ao estilo base Mentoria — bem sutil, sem mudar muito */
+  background: rgba(10, 10, 10, 0.82);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-.navbar .container {
+.navbar .nav-brand {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-}
-
-.navbar-logo {
+  gap: 0.5rem;
+  flex-shrink: 0;
+  text-decoration: none;
   min-width: 0;
 }
 
-.navbar-links {
-  min-width: 0;
+.navbar .nav-brand img {
+  height: 36px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
 }
 
-.navbar-links {
+.navbar .nav-brand-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.navbar .nav-links {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 0.25rem;
   flex: 1;
-  padding: 0 var(--space-md);
+  min-width: 0;
+  padding: 0 0.75rem;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-.navbar-links::-webkit-scrollbar {
+.navbar .nav-links::-webkit-scrollbar {
   height: 0;
 }
 
-.navbar-links a {
+.navbar .nav-links a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 9px 12px;
-  border-radius: 999px;
+  padding: 0.55rem 0.85rem;
+  border-radius: 100px;
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.76rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.86);
-  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.9);
   white-space: nowrap;
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
-.navbar-links a:hover {
+.navbar .nav-links a:hover {
   background: rgba(204, 0, 0, 0.18);
   color: var(--white);
   transform: translateY(-1px);
 }
 
-.navbar-links a:focus-visible {
+.navbar .nav-links a:focus-visible {
   outline: 3px solid rgba(204, 0, 0, 0.55);
   outline-offset: 3px;
 }
 
-.navbar-logo {
-  display: flex;
+.navbar .nav-cta {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: nowrap;
-  text-decoration: none;
-  flex: 0 0 auto;
-  max-width: 360px;
-}
-
-.navbar-logo img {
-  height: 45px;
-  width: auto;
-}
-
-.navbar-brand-name {
-  color: var(--white);
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 100px;
+  flex-shrink: 0;
+  white-space: nowrap;
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  line-height: 1;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  white-space: normal;
-  line-height: 1.05;
+  color: var(--white);
+  background: var(--red-primary);
+  box-shadow: 0 12px 32px rgba(204, 0, 0, 0.28);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-.navbar-cta .btn {
-  padding: 10px 18px;
-  font-size: 0.8rem;
-  white-space: nowrap;
+.navbar .nav-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transition: left 0.5s ease;
+  z-index: -1;
+}
+
+.navbar .nav-cta:hover::before { left: 100%; }
+
+.navbar .nav-cta:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(204, 0, 0, 0.38);
 }
 
 @media (max-width: 1120px) {
-  .navbar-logo {
-    max-width: 300px;
+  .navbar .nav-links {
+    padding: 0 0.5rem;
+    gap: 0;
   }
-
-  .navbar-brand-name {
-    font-size: 0.86rem;
+  .navbar .nav-links a {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.72rem;
   }
-
-  .navbar-links {
-    padding: 0 var(--space-sm);
-    gap: 10px;
+  .navbar .nav-cta {
+    padding: 0 18px;
+    font-size: 0.74rem;
+    min-height: 44px;
   }
-
-  .navbar-links a {
-    padding: 8px 10px;
-    font-size: 0.76rem;
+  .navbar .nav-brand-title {
+    font-size: 0.94rem;
   }
+}
 
-  .navbar-cta .btn {
-    padding: 10px 14px;
-    font-size: 0.78rem;
+@media (max-width: 980px) {
+  .navbar .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .navbar {
+    width: 95%;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+  .navbar .nav-brand-title {
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 44vw;
+  }
+  .navbar .nav-cta {
+    white-space: nowrap;
+    line-height: 1;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    min-height: 42px;
+    flex-shrink: 0;
   }
 }
 
@@ -389,7 +447,7 @@ p {
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding-top: 160px;
+  padding-top: 192px; /* (aumentado pois navbar agora é float pill ~96px + margem top: 24px) */
   padding-bottom: 128px;
   background-color: #050505;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -2450,24 +2508,42 @@ p {
     text-align: center;
   }
 
-  .navbar-cta {
-    display: none;
-    /* Evita vazamento lateral; no mobile temos o floating CTA de qualquer jeito */
-  }
-
-  .navbar .container {
-    justify-content: flex-start;
-  }
-
-  .navbar-links {
-    display: none;
-  }
-
-  .navbar-logo {
-    width: auto;
-  }
-
+  /* Padrão Mentoria: navbar .nav-links some em mobile, mantido em max-width: 520px
+     (ja temos media query no topo do arquivo, apenas garantir overwrite das classes antigas) */
+  .navbar-cta,
+  .navbar .container,
+  .navbar-links,
+  .navbar-logo,
   .navbar-brand-name {
+    all: unset;
+    display: none;
+  }
+  .navbar .nav-cta {
+    all: unset;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    line-height: 1;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    min-height: 42px;
+    border-radius: 100px;
+    background: var(--red-primary);
+    color: var(--white);
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(204, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .navbar .nav-links { display: none !important; }
+  .navbar .nav-brand { min-width: 0; width: auto; justify-content: flex-start; }
+  .navbar .nav-brand img { flex-shrink: 0; height: 32px; }
+  .navbar .nav-brand-title {
     margin-left: 0;
     text-align: left;
     font-size: 0.84rem;

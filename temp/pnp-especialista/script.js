@@ -116,7 +116,8 @@ function initLandingPage() {
       const targetId = this.getAttribute('href');
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
-        const navHeight = navbar.offsetHeight;
+        const navFloatGap = 24; /* margem da navbar fixed top: 24px + margem segura 12px */
+        const navHeight = navbar ? (navbar.offsetHeight + navFloatGap) : 96;
         const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - navHeight;
         window.scrollTo({
           top: targetPosition,
@@ -472,7 +473,8 @@ function initLandingPage() {
     if (btn) {
       btn.addEventListener('click', function () {
         play();
-        const navH = (navbar && navbar.offsetHeight) ? navbar.offsetHeight + 12 : 80;
+        const navFloatGap = 24;
+        const navH = (navbar && navbar.offsetHeight) ? (navbar.offsetHeight + navFloatGap + 12) : 96;
         const section = document.getElementById('video');
         if (section) {
           const top = section.getBoundingClientRect().top + window.pageYOffset - navH;

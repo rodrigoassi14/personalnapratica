@@ -14,6 +14,18 @@
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Wistia player + custom embed t9q3rb9r7q -->
+    <script src="https://fast.wistia.com/player.js" async></script>
+    <script src="https://fast.wistia.com/embed/t9q3rb9r7q.js" async type="module"></script>
+    <style>
+        wistia-player[media-id='t9q3rb9r7q']:not(:defined) {
+            background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/t9q3rb9r7q/swatch');
+            display: block;
+            filter: blur(5px);
+            padding-top: 56.25%;
+        }
+    </style>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -95,119 +107,153 @@
             background: #D92323;
         }
 
-        /* Site Header / Navbar */
-        .site-header {
+        /* ===== FLOATING NAVBAR (ESTILO MENTORIA P.N.P.) ===== */
+        .navbar {
             position: fixed;
-            z-index: 50;
-            inset: 0 0 auto;
-            padding: 22px 0;
-            background: transparent;
-            border-bottom: 0;
-            transition: background 220ms ease, box-shadow 220ms ease, backdrop-filter 220ms ease;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1120px;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+            z-index: 1000;
         }
-
-        .site-header.is-scrolled {
-            background: rgba(5, 5, 5, 0.95);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(18px);
-        }
-
-        .nav {
+        .nav-brand {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 28px;
-        }
-
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            min-width: 0;
-        }
-
-        .brand-logo {
-            width: 56px;
-            height: 56px;
-            object-fit: contain;
+            gap: 0.5rem;
             flex-shrink: 0;
+            text-decoration: none;
+        }
+        .nav-brand img {
+            height: 36px;
+            width: auto;
             display: block;
         }
-
-        .brand-text {
-            display: grid;
-            gap: 2px;
+        .nav-brand-title {
             font-family: 'Inter', Arial, sans-serif;
-            line-height: 1;
-            text-transform: uppercase;
-            letter-spacing: 0;
-        }
-
-        .brand-text strong {
-            font-size: 16px;
             font-weight: 900;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
             color: #fff;
         }
-
-        .brand-text span {
-            color: #D92323;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-        }
-
-        .nav-links {
+        .navbar .nav-links {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 34px;
-            margin-left: auto;
-            color: #efefef;
+            gap: 0.35rem;
+            flex: 1;
+            min-width: 0;
+            padding: 0 0.75rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-left: 0;
+        }
+        .navbar .nav-links::-webkit-scrollbar {
+            height: 0;
+        }
+        .navbar .nav-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.55rem 0.85rem;
+            border-radius: 100px;
             font-family: 'Inter', Arial, sans-serif;
-            font-size: 12px;
+            font-size: 0.78rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.04em;
+            color: rgba(255, 255, 255, 0.9);
+            white-space: nowrap;
+            transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
         }
-
-        .nav-links a {
-            transition: color 180ms ease;
+        .navbar .nav-links a:hover {
+            background: rgba(217, 35, 35, 0.18);
+            color: #fff;
+            transform: translateY(-1px);
         }
-
-        .nav-links a:hover,
-        .nav-links a:focus-visible {
-            color: #D92323;
-        }
-
-        .btn-nav {
+        .nav-cta {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            min-height: 52px;
-            padding: 0 28px;
-            border: 1px solid transparent;
-            border-radius: 5px;
-            font-family: 'Inter', Arial, sans-serif;
-            font-size: 13px;
-            font-weight: 900;
-            line-height: 1;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0;
-            transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+            min-height: 48px;
+            padding: 0 24px;
+            border-radius: 100px;
+            flex-shrink: 0;
             white-space: nowrap;
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
             color: #fff;
             background: #D92323;
-            box-shadow: 0 18px 38px rgba(217, 35, 35, 0.22);
+            box-shadow: 0 12px 32px rgba(217, 35, 35, 0.28);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
         }
-
-        .btn-nav:hover,
-        .btn-nav:focus-visible {
-            transform: translateY(-2px);
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+        .nav-cta:hover::before { left: 100%; }
+        .nav-cta:hover {
             background: #B91C1C;
-            box-shadow: 0 18px 38px rgba(217, 35, 35, 0.35);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(217, 35, 35, 0.38);
+        }
+        @media (max-width: 980px) {
+            .navbar .nav-links {
+                display: none;
+            }
+        }
+        @media (max-width: 520px) {
+            .navbar {
+                width: 95%;
+                padding: 0.5rem 0.5rem 0.5rem 1rem;
+                gap: 0.5rem;
+            }
+            .nav-brand {
+                min-width: 0;
+            }
+            .nav-brand img {
+                flex-shrink: 0;
+                height: 32px;
+            }
+            .nav-brand-title {
+                font-size: 0.92rem;
+                letter-spacing: 0.04em;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 42vw;
+            }
+            .nav-cta {
+                white-space: nowrap;
+                line-height: 1;
+                padding: 0.5rem 0.9rem;
+                font-size: 0.78rem;
+                letter-spacing: 0.02em;
+                min-height: 42px;
+                flex-shrink: 0;
+            }
         }
 
         /* Hero Logo (destaque com glow + animação de flutuar) */
@@ -1163,27 +1209,6 @@
             }
         }
 
-        /* Responsive Nav */
-        @media (max-width: 900px) {
-            .site-header {
-                padding: 14px 0;
-            }
-            .nav-links {
-                display: none;
-            }
-            .brand-text span {
-                display: none;
-            }
-            .brand-text strong {
-                font-size: 14px;
-            }
-            .btn-nav {
-                min-height: 46px;
-                padding: 0 20px;
-                font-size: 11px;
-            }
-        }
-
         /* ===== TESTIMONIALS / DEPOIMENTOS (adaptado do PNP Especialista) ===== */
         .depo-section {
             background: #0A0A0A;
@@ -1300,6 +1325,33 @@
             display: block;
             border: 0;
         }
+        /* CSS garantido para Wistia nativo na seção #video
+           (mantém player bonito no grid 3-cols, 16:9, sem margens extras) */
+        #video-wrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            background: #0a0a0a;
+        }
+        #video-wrap wistia-player#video-player {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            z-index: 20 !important;
+            pointer-events: auto !important;
+            width: 100% !important;
+            height: 100% !important;
+            position: absolute !important;
+            inset: 0 !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+        }
+        #video-wrap wistia-player#video-player::part(player) {
+            border-radius: 12px !important;
+            overflow: hidden !important;
+        }
         @media (max-width: 768px) {
             .depo-videos { grid-template-columns: 1fr; }
             .depo-section { padding: 64px 0; }
@@ -1308,30 +1360,25 @@
 </head>
 <body class="font-sans overflow-x-hidden">
 
-    <header class="site-header">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 nav">
-            <a class="brand" href="#inicio" aria-label="PNP Base">
-                <img src="imgs/logo-pnp-base.png" alt="PNP Base" class="brand-logo">
-                <span class="brand-text">
-                    <strong>PNP Base</strong>
-                    <span>Universidade Personal na Prática</span>
-                </span>
-            </a>
-
-            <nav class="nav-links" aria-label="Navegação principal">
-                <a href="#inicio">Início</a>
-                <a href="#conteudo">Conteúdo</a>
-                <a href="#depoimentos">Depoimentos</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#diferencial">Diferencial</a>
-                <a href="#faq">FAQ</a>
-            </nav>
-
-            <a class="btn-nav" href="#oferta">Quero entrar</a>
+    <!-- FLOATING NAV (ESTILO MENTORIA P.N.P.) -->
+    <nav class="navbar">
+        <a class="nav-brand" href="#inicio" aria-label="PNP Base">
+            <img src="../../assets/logo-personal-pensando-como-empresario.png" alt="Logo Personal na Prática">
+            <span class="nav-brand-title">BASE P.N.P.</span>
+        </a>
+        <div class="nav-links" aria-label="Navegação principal">
+            <a href="#inicio">Início</a>
+            <a href="#conteudo">Conteúdo</a>
+            <a href="#video">Vídeo</a>
+            <a href="#depoimentos">Depoimentos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#diferencial">Diferencial</a>
+            <a href="#faq">FAQ</a>
         </div>
-    </header>
+        <a class="nav-cta" href="#oferta">Quero entrar</a>
+    </nav>
 
-    <main id="inicio" class="relative pt-28 pb-20 lg:pt-36 lg:pb-32 overflow-hidden border-b border-white/5">
+    <main id="inicio" class="relative pt-36 pb-20 lg:pt-44 lg:pb-32 overflow-hidden border-b border-white/5">
         <!-- Red Ambient Glow -->
         <div class="absolute top-0 right-0 w-3/4 h-[800px] bg-brand-red opacity-20 blur-[150px] rounded-full pointer-events-none transform translate-x-1/4 -translate-y-1/4 z-0"></div>
         
@@ -1400,20 +1447,9 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
             <div class="grid md:grid-cols-5 gap-12 items-center">
                 
-                <!-- Video Thumbnail / Iframe -->
-                <div class="md:col-span-3 relative rounded-xl overflow-hidden border border-white/10 shadow-2xl aspect-video bg-zinc-900">
-                    <!-- YouTube Thumbnail (visible initially) -->
-                    <div id="video-cover" class="absolute inset-0 group cursor-pointer">
-                        <img src="https://img.youtube.com/vi/nKqp-yJqWD0/maxresdefault.jpg" alt="Vídeo PNP Base" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/nKqp-yJqWD0/hqdefault.jpg';">
-                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-20 h-20 rounded-full border-2 border-white/30 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform bg-black/20">
-                                <i class="fas fa-play text-white text-2xl ml-1"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- YouTube Iframe (hidden initially) -->
-                    <iframe id="video-iframe" class="absolute inset-0 w-full h-full hidden" src="" title="Vídeo PNP Base" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <!-- Wistia Player (nativo, sempre visível) -->
+                <div id="video-wrap" class="md:col-span-3 relative rounded-xl overflow-hidden border border-white/10 shadow-2xl aspect-video bg-zinc-900">
+                    <wistia-player id="video-player" class="absolute inset-0 w-full h-full z-20" media-id="t9q3rb9r7q" aspect="1.7777777777777777"></wistia-player>
                 </div>
 
                 <!-- Text side -->
@@ -2142,19 +2178,8 @@
     </footer>
 
     <script>
-        // Navbar scroll state
-        const siteHeader = document.querySelector(".site-header");
-
-        function updateHeaderState() {
-            if (siteHeader) {
-                siteHeader.classList.toggle("is-scrolled", window.scrollY > 60);
-            }
-        }
-
-        updateHeaderState();
-        window.addEventListener("scroll", updateHeaderState, { passive: true });
-
-        // Smooth scroll for nav links (scroll offset to compensate fixed header)
+        // Smooth scroll for nav links (scroll offset to compensate fixed floating navbar estilo Mentoria)
+        const navbar = document.querySelector('.navbar');
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function (e) {
                 const targetId = this.getAttribute("href");
@@ -2162,7 +2187,7 @@
                     const target = document.querySelector(targetId);
                     if (target) {
                         e.preventDefault();
-                        const offset = siteHeader ? (siteHeader.offsetHeight + 12) : 80;
+                        const offset = navbar ? (navbar.offsetHeight + 24) : 92;
                         const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
                         window.scrollTo({ top, behavior: "smooth" });
                     }
@@ -2170,35 +2195,205 @@
             });
         });
 
-        // YouTube video play handler
-        const videoCover = document.getElementById("video-cover");
-        const videoIframe = document.getElementById("video-iframe");
-        const btnAssistir = document.getElementById("btn-assistir");
-        const videoSrc = "https://www.youtube.com/embed/nKqp-yJqWD0?autoplay=1&rel=0&modestbranding=1";
+        // Wistia nativo — botão ASSISTIR AGORA dá scroll e INICIA O VÍDEO (sempre funciona)
+        (function () {
+            if (window.__pnpBaseWistiaNativeInited) return;
+            window.__pnpBaseWistiaNativeInited = true;
 
-        function playVideo() {
-            if (videoCover && videoIframe) {
-                videoCover.classList.add("hidden");
-                videoIframe.classList.remove("hidden");
-                videoIframe.src = videoSrc;
-            }
-        }
+            const WISTIA_MEDIA_ID = 't9q3rb9r7q';
+            const btnAssistir = document.getElementById('btn-assistir');
+            const navbarFloat = document.querySelector('.navbar');
+            const playerEl = document.getElementById('video-player');
 
-        if (videoCover) {
-            videoCover.addEventListener("click", playVideo);
-        }
-
-        if (btnAssistir) {
-            btnAssistir.addEventListener("click", function () {
-                playVideo();
-                const offset = siteHeader ? (siteHeader.offsetHeight + 12) : 80;
-                const videoSection = document.getElementById("video");
-                if (videoSection) {
-                    const top = videoSection.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({ top, behavior: "smooth" });
+            function scrollToVideo() {
+                const videoSection = document.getElementById('video');
+                if (!videoSection) return;
+                const offset = navbarFloat ? (navbarFloat.offsetHeight + 24) : 92;
+                const top = videoSection.getBoundingClientRect().top + window.pageYOffset - offset;
+                try {
+                    window.scrollTo({ top, behavior: 'smooth' });
+                } catch (_) {
+                    window.scrollTo(0, top);
                 }
-            });
-        }
+            }
+
+            // Fallback "sempre funciona": tenta clicar no play-button nativo do Wistia
+            // (está no shadow DOM — Wistia v2 usa classe w-big-play-button / aria-label "Reproduzir")
+            function clickNativePlayFallback() {
+                try {
+                    if (!playerEl) return false;
+                    const shadow = typeof playerEl.shadowRoot === 'object' && playerEl.shadowRoot ? playerEl.shadowRoot : null;
+                    const scopes = shadow ? [shadow, playerEl] : [playerEl];
+                    let clicked = false;
+                    const wantClasses = ['w-big-play-button'];
+                    for (let s = 0; s < scopes.length && !clicked; s++) {
+                        const scope = scopes[s];
+                        // 1) tenta pelo seletor mais provável do Wistia
+                        const bigBtns = scope.querySelectorAll('button.' + wantClasses.join(', button.'));
+                        for (let i = 0; i < bigBtns.length; i++) {
+                            try {
+                                bigBtns[i].style.setProperty('display', 'block', 'important');
+                                bigBtns[i].style.setProperty('pointer-events', 'auto', 'important');
+                                bigBtns[i].style.setProperty('visibility', 'visible', 'important');
+                                try {
+                                    bigBtns[i].dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+                                } catch (_a) {
+                                    try { bigBtns[i].click && bigBtns[i].click(); } catch (_b) {}
+                                }
+                                clicked = true;
+                                break;
+                            } catch (_c) {
+                                // continua
+                            }
+                        }
+                        // 2) tenta por aria-label contendo "Reproduzir" / "Play"
+                        if (!clicked) {
+                            const ariaMatches = scope.querySelectorAll('button[aria-label*="Reproduzir"], button[aria-label*="reproduzir"], button[aria-label*="Play"], button[aria-label*="play"], button[title*="Play"], button[title*="play"], button[title*="Reproduzir"], button[title*="reproduzir"]');
+                            for (let j = 0; j < ariaMatches.length && !clicked; j++) {
+                                try {
+                                    ariaMatches[j].style.setProperty('pointer-events', 'auto', 'important');
+                                    ariaMatches[j].style.setProperty('visibility', 'visible', 'important');
+                                    try {
+                                        ariaMatches[j].dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+                                    } catch (_d) {
+                                        try { ariaMatches[j].click && ariaMatches[j].click(); } catch (_e) {}
+                                    }
+                                    clicked = true;
+                                } catch (_f) {
+                                    // continua
+                                }
+                            }
+                        }
+                        // 3) último recurso: todos os buttons visíveis
+                        if (!clicked) {
+                            const all = scope.querySelectorAll('button, a, [role="button"]');
+                            for (let k = 0; k < all.length && !clicked; k++) {
+                                try {
+                                    const r = all[k].getBoundingClientRect();
+                                    if (r.width < 10 || r.height < 10) continue;
+                                    try {
+                                        all[k].dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+                                    } catch (_g) {
+                                        try { all[k].click && all[k].click(); } catch (_h) {}
+                                    }
+                                    clicked = true;
+                                } catch (_i) {
+                                    // continua
+                                }
+                            }
+                        }
+                    }
+                    return clicked;
+                } catch (_) {
+                    return false;
+                }
+            }
+
+            function tryPlayApiAndFallback(isSyncClick) {
+                // PRIORIDADE 1: window.Wistia.api (síncrono se já carregado)
+                let playedViaApi = false;
+                try {
+                    if (window.Wistia && typeof window.Wistia.api === 'function') {
+                        const api = window.Wistia.api(WISTIA_MEDIA_ID);
+                        if (api && typeof api.play === 'function') {
+                            try {
+                                const maybePromise = api.play();
+                                if (maybePromise && typeof maybePromise.then === 'function') {
+                                    maybePromise.then(function () {
+                                        playedViaApi = true;
+                                    }).catch(function () {
+                                        // autoplay bloqueado: tenta fallback
+                                        clickNativePlayFallback();
+                                    });
+                                } else {
+                                    playedViaApi = true;
+                                }
+                            } catch (_) {
+                                // ignora, vai pro fallback
+                            }
+                        }
+                    }
+                } catch (_) {
+                    // ignora, vai pro fallback
+                }
+
+                // PRIORIDADE 2: shadow DOM / light DOM play-button nativo
+                if (!playedViaApi) {
+                    try {
+                        const ok = clickNativePlayFallback();
+                        if (ok) return;
+                    } catch (_) {
+                        // ignora
+                    }
+                }
+
+                // PRIORIDADE 3 (apenas se não estiver sendo chamado dentro do clique síncrono):
+                // polling até a API ficar pronta (mas só chama fallback click para contar como gesto)
+                if (!isSyncClick) {
+                    let tries = 0;
+                    const intv = setInterval(function () {
+                        tries++;
+                        let ok = false;
+                        try {
+                            if (window.Wistia && typeof window.Wistia.api === 'function') {
+                                const api = window.Wistia.api(WISTIA_MEDIA_ID);
+                                if (api && typeof api.play === 'function') {
+                                    try { const p = api.play(); if (p && typeof p.then === 'function') { p.catch(function () { clickNativePlayFallback(); }); } ok = true; } catch (_) { ok = false; }
+                                }
+                            }
+                        } catch (_) {}
+                        if (!ok) ok = clickNativePlayFallback();
+                        if (ok || tries > 40) clearInterval(intv);
+                    }, 120);
+                }
+            }
+
+            if (btnAssistir) {
+                btnAssistir.addEventListener('click', function (e) {
+                    if (e && e.preventDefault) e.preventDefault();
+                    // SCROLL (não bloqueia play, rola antes / junto)
+                    setTimeout(scrollToVideo, 0);
+
+                    // PLAY: rodamos IMEDIATAMENTE (síncrono, no mesmo stack do clique)
+                    // isso é CRÍTICO para o navegador contar como "user gesture" e permitir autoplay
+                    tryPlayApiAndFallback(true);
+
+                    // Se player ainda não carregou (Wistia async), faz polling SEM usar
+                    // a API direta (que bloqueia fora de clique). Em vez disso volta a tentar
+                    // clique nativo / API quando estiver pronta.
+                    let tries = 0;
+                    const intv = setInterval(function () {
+                        tries++;
+                        let hasApi = false;
+                        try { hasApi = !!(window.Wistia && window.Wistia.api && window.Wistia.api(WISTIA_MEDIA_ID)); } catch (_) {}
+                        if (hasApi) {
+                            try {
+                                const api = window.Wistia.api(WISTIA_MEDIA_ID);
+                                if (api && typeof api.state === 'function' && api.state() === 'playing') {
+                                    clearInterval(intv); return;
+                                }
+                            } catch (_) {}
+                            // api existe, tenta triggerar clique nativo
+                            try {
+                                if (!clickNativePlayFallback()) {
+                                    try { const p = api && api.play && api.play(); if (p && typeof p.then === 'function') p.catch(function () {}); } catch (_) {}
+                                }
+                            } catch (_) {}
+                            clearInterval(intv);
+                            return;
+                        }
+                        // fallback rápido: se o shadow DOM já existe, clica nele SEM precisar da API
+                        try {
+                            if (playerEl && playerEl.shadowRoot) {
+                                const ok = clickNativePlayFallback();
+                                if (ok) { clearInterval(intv); return; }
+                            }
+                        } catch (_) {}
+                        if (tries > 120) clearInterval(intv);
+                    }, 100);
+                }, false); // NÃO usar capture (falso = bubbling, gesto mais confiável)
+            }
+        })();
 
         // Depoimentos — poster → iframe com autoplay (igual ao PNP Especialista)
         const depoPosters = document.querySelectorAll('.depo-poster[data-video-src]');

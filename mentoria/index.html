@@ -124,6 +124,127 @@
       color: var(--red);
       margin-bottom: 1.5rem;
     }
+    /* ===== TESTIMONIALS / DEPOIMENTOS (cópia idêntica do PNP Base) ===== */
+    .depo-section {
+      background: #0A0A0A;
+      padding: 96px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .depo-container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .depo-header {
+      text-align: center;
+      margin-bottom: 64px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .depo-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+    .depo-header h2 {
+      font-family: var(--font-heading);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+    }
+    .depo-header h2 .text-red { color: #D92323; }
+    .depo-header p {
+      margin-top: 16px;
+      color: #9ca3af;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .depo-videos {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .depo-video {
+      background: #141414;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+    }
+    .depo-video:first-child {
+      grid-column: 1 / -1;
+    }
+    .depo-poster {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: grid;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+    }
+    .depo-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .depo-poster-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 74px;
+      height: 74px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.55);
+      border: 2px solid rgba(255, 255, 255, 0.28);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+    .depo-poster-play::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-42%, -50%);
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-left: 18px solid rgba(255, 255, 255, 0.92);
+    }
+    .depo-poster:hover .depo-poster-play {
+      transform: translate(-50%, -50%) scale(1.03);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    .depo-poster:focus-visible {
+      outline: 3px solid rgba(217, 35, 35, 0.55);
+      outline-offset: 3px;
+    }
+    .depo-video iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      border: 0;
+    }
+    @media (max-width: 768px) {
+      .depo-videos { grid-template-columns: 1fr; }
+      .depo-section { padding: 64px 0; }
+    }
+
     .tag-label::before {
       content: '';
       width: 12px; height: 2px;
@@ -1334,7 +1455,7 @@
         <div class="video-wrap" id="video-wrap">
           <!-- YouTube Thumbnail (visible initially) -->
           <div id="video-cover" class="video-cover">
-            <img src="https://img.youtube.com/vi/9O_13yhnokM/maxresdefault.jpg" alt="Vídeo Mentoria Personal na Prática" class="video-cover-img" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/9O_13yhnokM/hqdefault.jpg';">
+            <img src="https://img.youtube.com/vi/4AXd0rkZA7I/maxresdefault.jpg" alt="Vídeo Mentoria Personal na Prática" class="video-cover-img" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/4AXd0rkZA7I/hqdefault.jpg';">
             <div class="video-cover-overlay"></div>
           </div>
 
@@ -1606,6 +1727,46 @@
     </div>
   </section>
 
+  <!-- DEPOIMENTOS / PROVA SOCIAL (cópia idêntica do PNP Base) — colocado ENTRE o expert e o preço (inscricao) -->
+  <section id="depoimentos" class="depo-section">
+    <div class="depo-container">
+      <div class="depo-header">
+        <span class="depo-label">Prova social</span>
+        <h2>Quem já viveu o <span class="text-red">Personal na Prática</span></h2>
+        <p>Resultados reais de profissionais que aplicaram o método.</p>
+      </div>
+      <div class="depo-videos">
+        <div class="depo-video">
+          <button class="depo-poster" type="button"
+                  data-video-src="https://www.youtube-nocookie.com/embed/jRqNaoS0RLo?modestbranding=1"
+                  data-video-title="Depoimento — Alunos do método"
+                  aria-label="Reproduzir depoimento — Alunos do método">
+            <img src="../assets/depoimento%201.png" alt="Depoimento — Alunos do método" loading="lazy">
+            <span class="depo-poster-play" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="depo-video">
+          <button class="depo-poster" type="button"
+                  data-video-src="https://www.youtube-nocookie.com/embed/UbKBGSbag8Y?modestbranding=1"
+                  data-video-title="Depoimentos — O que estão dizendo do Rodrigo Assi"
+                  aria-label="Reproduzir depoimentos — O que estão dizendo do Rodrigo Assi">
+            <img src="../assets/depoimento%202.png" alt="Depoimentos — O que estão dizendo do Rodrigo Assi" loading="lazy">
+            <span class="depo-poster-play" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="depo-video">
+          <button class="depo-poster" type="button"
+                  data-video-src="https://www.youtube-nocookie.com/embed/3NqRfaWIvsU?modestbranding=1"
+                  data-video-title="Depoimento — Fernando"
+                  aria-label="Reproduzir depoimento — Fernando">
+            <img src="../assets/depoimento%203.png" alt="Depoimento — Fernando" loading="lazy">
+            <span class="depo-poster-play" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PRICING (BRUTALIST) -->
   <section class="pricing-section" id="inscricao">
     <div class="container pricing-container">
@@ -1710,7 +1871,7 @@
       var navbar = document.querySelector('.navbar');
       if (!wrap || !iframe) return;
 
-      var VIDEO_ID  = '9O_13yhnokM';
+      var VIDEO_ID  = '4AXd0rkZA7I';
       var VIDEO_EMBED = 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID;
       var ORIGIN = (window.location.origin || '').replace(/\/$/, '');
 
@@ -1809,6 +1970,33 @@
       run();
     }
   })();
+  </script>
+
+  <script defer>
+    // Depoimentos — poster → iframe com autoplay (cópia idêntica do PNP Base)
+    (function () {
+      const depoPosters = document.querySelectorAll('.depo-poster[data-video-src]');
+      depoPosters.forEach(function (poster) {
+        poster.addEventListener('click', function () {
+          const wrapper = poster.closest('.depo-video');
+          const videoSrc = poster.getAttribute('data-video-src');
+          const videoTitle = poster.getAttribute('data-video-title') || 'Vídeo';
+          if (!wrapper || !videoSrc) return;
+
+          const iframe = document.createElement('iframe');
+          const sep = videoSrc.indexOf('?') !== -1 ? '&' : '?';
+          iframe.src = videoSrc + sep + 'autoplay=1&rel=0&playsinline=1';
+          iframe.title = videoTitle;
+          iframe.loading = 'lazy';
+          iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          iframe.allowFullscreen = true;
+
+          wrapper.innerHTML = '';
+          wrapper.appendChild(iframe);
+        });
+      });
+    })();
   </script>
 </body>
 </html>

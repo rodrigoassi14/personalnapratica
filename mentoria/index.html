@@ -130,6 +130,26 @@
       background: var(--red);
     }
 
+    /* ===== HERO BADGE (estilo pill Especialista — 🔥 + borda transparente vermelha) ===== */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(204, 0, 0, 0.15);
+      border: 1px solid rgba(204, 0, 0, 0.3);
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #fff;
+      width: fit-content;
+      margin-bottom: 1.25rem;
+    }
+    .hero-badge::before {
+      content: '🔥';
+    }
+
     /* ===== BUTTONS ===== */
     .btn {
       display: inline-flex;
@@ -1252,7 +1272,7 @@
   <!-- HERO (ASYMMETRICAL) -->
   <section class="hero">
     <div class="hero-content reveal active">
-      <div class="tag-label">Vagas Limitadas • 2 Meses ao Vivo</div>
+      <div class="hero-badge">UNIVERSIDADE PERSONAL NA PRÁTICA</div>
       <h1 class="title-xl">
         PARE DE TRABALHAR<br>
         <span class="" style="

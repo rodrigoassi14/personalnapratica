@@ -2,223 +2,298 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Links - Personal na Prática</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Rodrigo Assi | Personal na Prática</title>
+  <meta name="description" content="Cursos, mentoria, treinos e contato do Rodrigo Assi, do Personal na Prática.">
+  <meta name="theme-color" content="#050505">
+
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="Links — Personal na Prática">
-  <meta property="og:description" content="Acesse os links oficiais do Personal na Prática.">
-  <meta property="og:url" content="https://rodrigoassi14.github.io/personalnapratica/bio/">
-  <meta property="og:image" content="https://rodrigoassi14.github.io/personalnapratica/bio/bg-links.png">
-  <meta property="og:image:secure_url" content="https://rodrigoassi14.github.io/personalnapratica/bio/bg-links.png">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:title" content="Rodrigo Assi | Personal na Prática">
+  <meta property="og:description" content="Cursos, mentoria, treinos e contato do Rodrigo Assi.">
+  <meta property="og:url" content="https://personalnapratica.com.br/bio/">
+  <meta property="og:image" content="https://personalnapratica.com.br/bio/bg-links.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Links — Personal na Prática">
-  <meta name="twitter:description" content="Acesse os links oficiais do Personal na Prática.">
-  <meta name="twitter:image" content="https://rodrigoassi14.github.io/personalnapratica/bio/bg-links.png">
-  <link rel="icon" href="../assets/logo-personal-pensando-como-empresario.png">
-  
-  <!-- Fontes (mesmas do resto do projeto) -->
+  <meta name="twitter:image" content="https://personalnapratica.com.br/bio/bg-links.png">
+
+  <link rel="icon" href="img/logo-pp.png">
+  <link rel="apple-touch-icon" href="img/logo-pp.png">
+  <link rel="preload" as="image" href="img/rodrigo.webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..900;1,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg-color: #050505;
-      --text-color: #ffffff;
-      --red: #ea0e0e;
-      --font-heading: 'Montserrat', sans-serif;
-      --font-body: 'Open Sans', sans-serif;
-      --container-w: 600px;
+      --black: #050505;
+      --red: #EA0E0E;
+      --white: #FFFFFF;
+      --text: rgba(255, 255, 255, .86);
+      --muted: rgba(255, 255, 255, .56);
+      --hairline: rgba(255, 255, 255, .08);
+      --display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+      --body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --radius: 16px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: var(--black); -webkit-text-size-adjust: 100%; }
     body {
-      background-color: var(--bg-color);
-      background-image: url('background.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: var(--text-color);
-      font-family: var(--font-body);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 3rem 1.5rem;
+      margin: 0;
+      min-height: 100svh;
+      color: var(--white);
+      font-family: var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, p { margin: 0; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    /* Fundo: a academia escura, sumindo pro preto. Fica parado no lugar (funciona no iPhone também). */
+    body::before, body::after { content: ""; position: fixed; inset: 0; pointer-events: none; }
+    body::before { z-index: -2; background: url("img/fundo.webp") center / cover no-repeat; opacity: .6; }
+    body::after  { z-index: -1; background: linear-gradient(to bottom, rgba(5,5,5,.15) 0%, rgba(5,5,5,.7) 40%, var(--black) 80%); }
+
+    .page {
+      width: min(100% - 32px, 520px);
+      margin-inline: auto;
+      padding: max(36px, env(safe-area-inset-top)) 0 max(28px, env(safe-area-inset-bottom));
     }
 
-    .container {
-      width: 100%;
-      max-width: var(--container-w);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
+    /* ===== Cabeçalho ===== */
+    .profile { display: flex; flex-direction: column; align-items: center; text-align: center; }
 
-    /* ===== PROFILE HEADER ===== */
-    .profile-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      text-align: center;
+    /* Foto dentro do anel vermelho do logo PP, com a cabeça saindo por cima */
+    .avatar {
+      position: relative;
+      isolation: isolate;
+      width: clamp(184px, 50vw, 220px);
+      aspect-ratio: 1;
     }
-
-    .profile-img-wrap {
-      width: clamp(180px, 32vw, 240px);
-      height: clamp(180px, 32vw, 240px);
-      border-radius: 50%;
+    .avatar::before { /* brilho vermelho atrás do disco */
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 50%; top: 62%;
+      width: 125%; aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(closest-side, rgba(234,14,14,.34), rgba(234,14,14,.1) 55%, transparent);
     }
-
-    .profile-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 14px rgba(234, 14, 14, 0.18));
+    .avatar .ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .avatar .ring circle {
+      fill: none;
+      stroke: var(--red);
+      stroke-width: 10;
+      stroke-linecap: round;
+      transform: rotate(90deg);
+      transform-origin: 440px 545px;
+      filter: drop-shadow(0 0 10px rgba(234,14,14,.75));
     }
+    .avatar img { position: relative; width: 100%; height: 100%; }
 
-    .profile-handle {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      color: var(--text-color);
-      transition: color 0.3s ease;
+    .name {
+      margin-top: 6px;
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(40px, 11vw, 48px);
+      line-height: 1;
+      letter-spacing: .015em;
+      text-transform: uppercase;
+    }
+    .handle {
+      margin-top: 8px;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 6px;
+      color: rgba(255, 255, 255, .72);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: color .2s ease;
     }
-    .profile-handle:hover {
-      color: var(--red);
+    .handle svg { width: 16px; height: 16px; flex: none; }
+    .handle:hover { color: var(--white); }
+
+    .bio {
+      margin-top: 16px;
+      max-width: 34ch;
+      color: var(--text);
+      font-size: 15.5px;
+      line-height: 1.5;
+      text-wrap: balance;
     }
 
-    .verified-badge {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 18px;
-      color: #0095f6;
-      fill: currentColor;
+    /* ===== Links ===== */
+    .links { display: grid; gap: 14px; margin-top: 30px; }
+    .pair  { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    /* Card = arte + moldura fina desenhada POR CIMA da arte (um anel recortado),
+       assim a luz aparece igual nos quatro lados, em qualquer tela. */
+    @property --beam { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
+    .card {
+      --glow: 234, 14, 14;
+      position: relative;
+      display: block;
+      aspect-ratio: 960 / 340;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #141414;
+      box-shadow: 0 16px 32px -16px rgba(0,0,0,.9);
+      transition: box-shadow .3s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .card img { width: 100%; height: 100%; object-fit: cover; }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1px; /* espessura da moldura */
+      border-radius: inherit;
+      pointer-events: none;
+      background:
+        conic-gradient(from var(--beam),
+          transparent 0 82%,
+          rgba(var(--glow), .15) 90%,
+          rgba(var(--glow), .85) 97%,
+          rgba(255, 255, 255, .75) 99.3%,
+          transparent 100%),
+        rgba(255, 255, 255, .08);
+      /* recorta o miolo: sobra só o anel de 1px */
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+              mask-composite: exclude;
     }
 
-    /* ===== LINKS CONTAINER ===== */
-    .links-container {
-      width: 100%;
+    /* WhatsApp: mais baixo, cortando o topo e o rodapé vazios da arte e deixando ícone e texto no meio */
+    .card--wa { --glow: 37, 211, 102; aspect-ratio: 21 / 10; }
+    .card--wa img { object-position: 50% 47.4%; }
+
+    /* Cards que giram no sentido anti-horário: o rastro da luz fica do outro lado.
+       Alterna um card sim, um não; no par do WhatsApp, o da esquerda vai pra esquerda e o da direita pra direita. */
+    .links > .card:nth-child(even)::after,
+    .pair > .card:first-child::after {
+      background:
+        conic-gradient(from var(--beam),
+          transparent 0,
+          rgba(255, 255, 255, .75) .7%,
+          rgba(var(--glow), .85) 3%,
+          rgba(var(--glow), .15) 10%,
+          transparent 18% 100%),
+        rgba(255, 255, 255, .08);
+    }
+
+    /* hover (e toque no celular): só a luz atrás do card, na cor dele */
+    @media (hover: hover) {
+      .card:hover { box-shadow: 0 10px 38px -8px rgba(var(--glow), .55); }
+    }
+    .card:active { box-shadow: 0 10px 38px -8px rgba(var(--glow), .55); }
+    .card:focus-visible, .handle:focus-visible {
+      outline: 2px solid var(--white);
+      outline-offset: 3px;
+    }
+
+    /* ===== Rodapé ===== */
+    .foot {
+      margin-top: 48px;
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
       align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+      text-align: center;
     }
+    .foot img { width: 34px; height: 34px; opacity: .9; }
 
-    .link-item {
-      display: block;
-      width: min(800px, 100%);
-      border-radius: 16px;
-      overflow: hidden;
-      position: relative;
-      text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      border: 1px solid rgba(255,255,255,0.05);
-      background-color: #111;
+    /* ===== Abertura: a foto aparece, o anel se desenha em volta, o resto entra junto ===== */
+    @media (prefers-reduced-motion: no-preference) {
+      .avatar img   { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
+      .avatar .ring circle {
+        stroke-dasharray: 1;
+        animation: draw 1.3s .25s cubic-bezier(.65,0,.35,1) both;
+      }
+      .avatar::before { animation: fade 1.2s .4s ease both; }
+      .profile > :not(.avatar), .links, .foot { animation: fade .6s .55s ease both; }
+
+      /* Luz das bordas: todos começam juntos, no topo central de cada card, e dão a volta no mesmo tempo.
+         Um card vai no sentido horário, o seguinte no anti-horário. */
+      .card::after     { animation: beam 24s linear infinite; }
+      .card--wa::after { animation-name: beam-wa; }
+      .links > .card:nth-child(even)::after,
+      .pair > .card:first-child::after { animation-direction: reverse; }
     }
-
-    .link-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(234, 14, 14, 0.15);
-      border-color: rgba(234, 14, 14, 0.3);
-    }
-
-    .link-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: inherit;
-    }
-
-    /* Loading state para evitar piscadas feias */
-    .link-img:not([src]) {
-      background: linear-gradient(90deg, #111 0%, #222 50%, #111 100%);
-      background-size: 200% 100%;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
+    /* ângulos calculados pra luz andar em velocidade constante pela borda (sem acelerar nas pontas) */
+    @keyframes beam { 0%{--beam:0.0deg} 2.5%{--beam:20.9deg} 5%{--beam:37.4deg} 7.5%{--beam:48.9deg} 10%{--beam:56.8deg} 12.5%{--beam:62.4deg} 15%{--beam:66.4deg} 17.5%{--beam:69.5deg} 20%{--beam:74.8deg} 22.5%{--beam:82.3deg} 25%{--beam:90.0deg} 27.5%{--beam:97.7deg} 30%{--beam:105.2deg} 32.5%{--beam:110.5deg} 35%{--beam:113.6deg} 37.5%{--beam:117.6deg} 40%{--beam:123.2deg} 42.5%{--beam:131.1deg} 45%{--beam:142.6deg} 47.5%{--beam:159.1deg} 50%{--beam:180.0deg} 52.5%{--beam:200.9deg} 55%{--beam:217.4deg} 57.5%{--beam:228.9deg} 60%{--beam:236.8deg} 62.5%{--beam:242.4deg} 65%{--beam:246.4deg} 67.5%{--beam:249.5deg} 70%{--beam:254.8deg} 72.5%{--beam:262.3deg} 75%{--beam:270.0deg} 77.5%{--beam:277.7deg} 80%{--beam:285.2deg} 82.5%{--beam:290.5deg} 85%{--beam:293.6deg} 87.5%{--beam:297.6deg} 90%{--beam:303.2deg} 92.5%{--beam:311.1deg} 95%{--beam:322.6deg} 97.5%{--beam:339.1deg} 100%{--beam:360.0deg} }
+    @keyframes beam-wa { 0%{--beam:0.0deg} 2.5%{--beam:17.2deg} 5%{--beam:31.8deg} 7.5%{--beam:42.9deg} 10%{--beam:51.1deg} 12.5%{--beam:57.2deg} 15%{--beam:61.7deg} 17.5%{--beam:66.1deg} 20%{--beam:73.6deg} 22.5%{--beam:81.6deg} 25%{--beam:90.0deg} 27.5%{--beam:98.4deg} 30%{--beam:106.4deg} 32.5%{--beam:113.9deg} 35%{--beam:118.3deg} 37.5%{--beam:122.8deg} 40%{--beam:128.9deg} 42.5%{--beam:137.1deg} 45%{--beam:148.2deg} 47.5%{--beam:162.8deg} 50%{--beam:180.0deg} 52.5%{--beam:197.2deg} 55%{--beam:211.8deg} 57.5%{--beam:222.9deg} 60%{--beam:231.1deg} 62.5%{--beam:237.2deg} 65%{--beam:241.7deg} 67.5%{--beam:246.1deg} 70%{--beam:253.6deg} 72.5%{--beam:261.6deg} 75%{--beam:270.0deg} 77.5%{--beam:278.4deg} 80%{--beam:286.4deg} 82.5%{--beam:293.9deg} 85%{--beam:298.3deg} 87.5%{--beam:302.8deg} 90%{--beam:308.9deg} 92.5%{--beam:317.1deg} 95%{--beam:328.2deg} 97.5%{--beam:342.8deg} 100%{--beam:360.0deg} }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px) scale(.97); } }
+    @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+    @keyframes fade { from { opacity: 0; } }
   </style>
 </head>
 <body>
+  <main class="page">
 
-  <div class="container">
-    <!-- Header: Foto + Arroba -->
-    <header class="profile-header">
-      <div class="profile-img-wrap">
-        <img src="profile.png" alt="Profile" class="profile-img">
+    <header class="profile">
+      <div class="avatar">
+        <svg class="ring" viewBox="0 0 880 880" aria-hidden="true"><circle cx="440" cy="545" r="300" pathLength="1"/></svg>
+        <img src="img/rodrigo.webp" width="880" height="880" alt="Rodrigo Assi" fetchpriority="high">
       </div>
-      <a href="https://instagram.com/personalnapratica" target="_blank" class="profile-handle">
-        @PERSONALNAPRATICA
-        <svg aria-hidden="true" class="verified-badge" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-          <path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path>
-        </svg>
+      <h1 class="name">Rodrigo Assi</h1>
+      <a class="handle" href="https://instagram.com/personalnapratica" target="_blank" rel="noopener">
+        @personalnapratica
+        <svg viewBox="0 0 24 24" aria-label="Perfil verificado" role="img"><circle cx="12" cy="12" r="11" fill="#1D9BF0"/><path d="M7.2 12.4l3.2 3.1 6.4-6.6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+      <p class="bio">Formando especialistas em emagrecimento, definição muscular e periodização.</p>
     </header>
 
-    <!-- Lista de Links Gerada via JS -->
-    <main class="links-container" id="links-container">
-      <!-- Links injetados aqui -->
-    </main>
-  </div>
+    <!--
+      LINKS: pra trocar um destino, mude o href. Pra trocar a arte, mude o src (imagens na pasta img).
+      Banners horizontais: 960x340. Cards do WhatsApp: arte quadrada, mostrada cortada no meio.
+    -->
+    <nav class="links" aria-label="Cursos, conteúdo e contato">
+      <a class="card" href="https://personalnapratica.com.br/pnp-base/" target="_blank" rel="noopener">
+        <img src="img/pnp-base.webp" width="960" height="340" alt="PNP Base: aprenda a pensar. Avaliação e prescrição inteligente.">
+      </a>
+      <a class="card" href="https://personalnapratica.com.br/pnp-especialista/" target="_blank" rel="noopener">
+        <img src="img/pnp-especialista.webp" width="960" height="340" alt="PNP Especialista: aprenda a aplicar. Resultados reais através da periodização.">
+      </a>
+      <a class="card" href="https://personalnapratica.com.br/mentoria/" target="_blank" rel="noopener">
+        <img src="img/mentoria.webp" width="960" height="340" alt="Mentoria ao vivo: Pensando como Empresário 2.0.">
+      </a>
+      <a class="card" href="https://personalnapratica.com.br/consultoria" target="_blank" rel="noopener">
+        <img src="img/consultoria.webp" width="960" height="340" alt="Consultoria Agora ou Nunca: treinos transformando a sua vida.">
+      </a>
+      <a class="card" href="https://desafioagoraoununca.com.br/" target="_blank" rel="noopener">
+        <img src="img/desafio.webp" width="960" height="340" alt="Desafios de treino Agora ou Nunca: treinos transformando o seu corpo.">
+      </a>
+      <a class="card" href="https://www.youtube.com/rodrigoassipersonalnapratica" target="_blank" rel="noopener">
+        <img src="img/youtube.webp" width="960" height="340" alt="Canal do YouTube: inscreva-se.">
+      </a>
+      <a class="card" href="https://www.tiktok.com/@personalnapratica" target="_blank" rel="noopener">
+        <img src="img/tiktok.webp" width="1200" height="425" alt="TikTok oficial: siga no TikTok.">
+      </a>
 
-  <script>
-    /**
-     * DADOS DOS LINKS
-     * Edite este array para adicionar, remover ou alterar a ordem dos links.
-     * 
-     * url: Link de destino. Ex: "https://seusite.com" ou "#"
-     * img: Caminho da imagem do card. Ex: "1.png"
-     * alt: Texto alternativo para acessibilidade (opcional, mas recomendado).
-     */
-    const linksData = [
-      { url: "../pnp-base/index.html", img: "00.png", alt: "PNP Base — Aprenda a Pensar, Avaliação e Prescrição Inteligente" },
-      { url: "../pnp-especialista/index.html", img: "1.png", alt: "PNP Especialista — Tornar-se um Especialista em Ciência e Experiência de Campo" },
-      { url: "../mentoria/", img: "2.png", alt: "Mentoria Ao Vivo" },
-      { url: "https://desafioagoraoununca.com.br/", img: "3.png", alt: "Desafios de Treino Agora ou Nunca" },
-      { url: "https://personalnapratica.com.br/consultoria", img: "0.png", alt: "Consultoria — Personal na Prática" },
-      { url: "https://www.youtube.com/rodrigoassipersonalnapratica", img: "4.png", alt: "Imagem Link 4" },
-      { url: "https://api.whatsapp.com/send?1=pt_BR&phone=5511976563187&text=Faaaaaaala%2C+Personal+na+Pr%C3%A1tica+%E2%80%A6%0AMe+responde+%21%21%21%0AVoc%C3%AA+quer+falar+sobre+TREINO+OU+CURSO+%3F+", img: "5.png", alt: "Imagem Link 5" }
-    ];
-
-    // Função para renderizar os links
-    function renderLinks() {
-      const container = document.getElementById('links-container');
-      
-      const linksHTML = linksData.map(link => `
-        <a href="${link.url}" class="link-item" target="_blank" rel="noopener noreferrer">
-          <img src="${link.img}" alt="${link.alt}" class="link-img" loading="lazy">
+      <div class="pair">
+        <a class="card card--wa" href="https://api.whatsapp.com/send?phone=5511976563187&amp;text=Oi%2C%20Rodrigo!%20Sou%20personal%20e%20quero%20saber%20dos%20cursos." target="_blank" rel="noopener">
+          <img src="img/whatsapp-personal.webp" width="900" height="900" alt="WhatsApp: sou personal, quero saber dos cursos.">
         </a>
-      `).join('');
+        <a class="card card--wa" href="https://api.whatsapp.com/send?phone=5511976563187&amp;text=Oi%2C%20Rodrigo!%20Quero%20treinar%20com%20voc%C3%AA." target="_blank" rel="noopener">
+          <img src="img/whatsapp-treino.webp" width="900" height="900" alt="WhatsApp: quero treinar com o Rodrigo.">
+        </a>
+      </div>
+    </nav>
 
-      container.innerHTML = linksHTML;
-    }
+    <footer class="foot">
+      <img src="img/logo-pp.png" width="34" height="34" alt="">
+      <p>Prof. Esp. Rodrigo Assi<br>CREF 004242-G/RO</p>
+    </footer>
 
-    // Renderiza ao carregar
-    document.addEventListener('DOMContentLoaded', renderLinks);
-  </script>
-
+  </main>
 </body>
 </html>

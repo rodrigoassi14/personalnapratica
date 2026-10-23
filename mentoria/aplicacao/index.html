@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><meta name="referrer" content="no-referrer">
+<title>Candidatura à Mentoria | Personal na Prática</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <a class="back" href="../">← Conhecer a Mentoria</a>
+  <p class="eyebrow">PERSONAL NA PRÁTICA · MENTORIA</p>
+  <h1>Vamos entender seu próximo passo.</h1>
+  <p class="intro">Conte seu momento profissional. Depois, você poderá revisar e enviar suas respostas ao atendimento do Rodrigo no WhatsApp para conversar sobre a Mentoria.</p>
+  <p class="notice">A candidatura não garante vaga e não exige pagamento. Seus dados serão usados para atender este pedido. Este formulário não inscreve você em campanhas.</p>
+  <noscript><p class="notice">Ative o JavaScript para preparar e revisar a candidatura. Você também pode falar com o atendimento pelo WhatsApp.</p></noscript>
+  <form id="application" method="post">
+    <label for="nome">Nome completo</label><input id="nome" name="nome" autocomplete="name" required minlength="3" maxlength="100">
+    <div class="grid">
+      <div><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="160"></div>
+      <div><label for="telefone">WhatsApp com DDD</label><input id="telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="22" placeholder="(11) 99999-9999"></div>
+    </div>
+    <label for="momento">Qual é o seu momento profissional?</label>
+    <select id="momento" name="momento" required>
+      <option value="">Selecione</option><option>Sou estudante de Educação Física</option><option>Estou começando como personal</option><option>Já atendo e quero organizar meu negócio</option><option>Já tenho uma operação e quero evoluir</option>
+    </select>
+    <label for="objetivo">O que você quer desenvolver com a Mentoria?</label><textarea id="objetivo" name="objetivo" required minlength="10" maxlength="450" rows="3"></textarea>
+    <label for="dificuldade">Qual é a maior dificuldade para chegar lá?</label><textarea id="dificuldade" name="dificuldade" required minlength="10" maxlength="450" rows="3"></textarea>
+    <label class="check"><input type="checkbox" required> Quero encaminhar estas respostas ao atendimento do Personal na Prática para conversar sobre minha candidatura.</label>
+    <p id="error" role="alert"></p>
+    <button type="submit">Preparar candidatura para o WhatsApp →</button>
+  </form>
+  <section id="review" hidden aria-labelledby="review-title">
+    <h2 id="review-title">Revise antes de enviar</h2>
+    <pre id="summary"></pre>
+    <p>Suas respostas ainda não foram enviadas nem registradas pelo atendimento. O botão abaixo abre o WhatsApp com a mensagem preparada. Conclua o envio por lá.</p>
+    <a id="send" class="button" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Abrir WhatsApp para enviar</a>
+    <button class="secondary" id="edit" type="button">Editar respostas</button>
+  </section>
+  <footer>Rodrigo Assi · Personal na Prática</footer>
+</main>
+<script src="application.js"></script>
+</body>
+</html>

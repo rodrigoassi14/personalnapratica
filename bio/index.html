@@ -125,6 +125,8 @@
       text-wrap: balance;
     }
 
+    .route-title { margin: 0; color: #fff; font-size: 16px; font-weight: 650; }
+    .route-copy { margin: 0; color: #aaa; font-size: 14px; line-height: 1.5; }
     /* ===== Links ===== */
     .links { display: grid; gap: 14px; margin-top: 30px; }
     .pair  { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -258,7 +260,8 @@
       LINKS: pra trocar um destino, mude o href. Pra trocar a arte, mude o src (imagens na pasta img).
       Banners horizontais: 960x340. Cards do WhatsApp: arte quadrada, mostrada cortada no meio.
     -->
-    <nav class="links" aria-label="Cursos, conteúdo e contato">
+    <nav class="links" aria-label="Formações para personal trainers">
+      <h2 class="route-title">Sou personal · formações e Mentoria</h2>
       <a class="card" href="https://personalnapratica.com.br/pnp-base/" target="_blank" rel="noopener">
         <img src="img/pnp-base.webp" width="960" height="340" alt="PNP Base: aprenda a pensar. Avaliação e prescrição inteligente.">
       </a>
@@ -268,12 +271,19 @@
       <a class="card" href="https://personalnapratica.com.br/mentoria/" target="_blank" rel="noopener">
         <img src="img/mentoria.webp" width="960" height="340" alt="Mentoria ao vivo: Pensando como Empresário 2.0.">
       </a>
-      <a class="card" href="https://personalnapratica.com.br/consultoria" target="_blank" rel="noopener">
-        <img src="img/consultoria.webp" width="960" height="340" alt="Consultoria Agora ou Nunca: treinos transformando a sua vida.">
-      </a>
+    </nav>
+    <nav class="links" aria-label="Treinar com Rodrigo">
+      <h2 class="route-title">Quero treinar com o Rodrigo</h2>
+      <p class="route-copy">Comece pelo Desafio. Para acompanhamento personalizado, conheça a Consultoria.</p>
       <a class="card" href="https://desafioagoraoununca.com.br/" target="_blank" rel="noopener">
         <img src="img/desafio.webp" width="960" height="340" alt="Desafios de treino Agora ou Nunca: treinos transformando o seu corpo.">
       </a>
+      <a class="card" href="https://personalnapratica.com.br/consultoria" target="_blank" rel="noopener">
+        <img src="img/consultoria.webp" width="960" height="340" alt="Consultoria Agora ou Nunca: treinos transformando a sua vida.">
+      </a>
+    </nav>
+    <nav class="links" aria-label="Conteúdo e atendimento">
+      <h2 class="route-title">Conteúdo e atendimento</h2>
       <a class="card" href="https://www.youtube.com/rodrigoassipersonalnapratica" target="_blank" rel="noopener">
         <img src="img/youtube.webp" width="960" height="340" alt="Canal do YouTube: inscreva-se.">
       </a>
